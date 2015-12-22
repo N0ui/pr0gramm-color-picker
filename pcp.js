@@ -1,15 +1,19 @@
 // ==UserScript==
-// @name         pcp - pr0gramm color picker
-// @namespace    http://tampermonkey.net/
-// @version      0.1
-// @description  alles bleibt hier nicht so wie es ist! (Für den der will)
-// @author       N0ui
-// @match        *://pr0gramm.com/*
-// @grant        none
+// @name		pcp - pr0gramm color picker
+// @author		N0ui
+// @namespace	pcp
+// @include		http://*pr0gramm.com*
+// @include		https://*pr0gramm.com*
+// @version		0.1
+// @updateURL	https://raw.githubusercontent.com/N0ui/pr0gramm-color-picker/master/pcp.js
+// @downloadURL	https://raw.githubusercontent.com/N0ui/pr0gramm-color-picker/master/pcp.js
+// @copyright	2015+, N0ui
+// @description	alles bleibt hier nicht so wie es ist! (Für den der will)
+// @icon		http://pr0gramm.com/media/pr0gramm-favicon.png
+// @run-at       document-end
 // ==/UserScript==
-/* jshint -W097 */
-'use strict';
-(function ($) {
+(function () {
+    'use strict';
     var PCC = {
         // used colors
         colorNames: [{
@@ -18,29 +22,63 @@
             value: '#ee4d2e'
         }, {
             desc: 'Linkfarbe',
-            key: 'second-color',
+            key: 'link-color',
             value: '#75c0c7'
         }, {
             desc: 'Buttontext',
-            key: 'third-color',
+            key: 'btn-color',
             value: '#f2f5f4'
-        }],
+        }, {
+            desc: 'Warnung',
+            key: 'warn-color',
+            value: '#fc8833'
+        }, {
+            desc: 'Abbrechen Button Hintergrund',
+            key: 'cancelBtn-bg-color',
+            value: '#212425'
+        }, {
+            desc: 'Abbrechen Button Text',
+            key: 'cancelBtn-color',
+            value: '#888888'
+        }, {
+            desc: 'Button Hover Hintergrund',
+            key: 'btn-hover-bg-color',
+            value: '#F5F7F6'
+        }, {
+            desc: 'Button Hover Text',
+            key: 'btn-hover-color',
+            value: '#555555'
+        ],
+
+        // style
         // style
         cssStyle: function () {
-            var cssStr = '';
-            cssStr += '#filter-save,.confirm-button, input[type=button], input[type=submit],.filter-setting.active .filter-check {';
-            cssStr += 'background-color: ' + localStorage["main-color"] + ' !important;}';
+            var $styleEl = $('#pcp-style'),
+                cssStr = '';
+            cssStr += '#filter-save,.confirm-button, input[type=button], input[type=submit],.filter-setting.active .filter-check, .loader > div {';
+            cssStr += 'background-color: ' + localStorage["main-color"] + ';}';
             cssStr += '.filter-setting.active .filter-check {';
-            cssStr += 'border: 1px solid ' + localStorage["main-color"] + ' !important;}';
-            cssStr += '#settings-logout-link,.action,.filter-setting.active .filter-name,.head-link:hover,.tab-bar a:hover, .tab-bar a.active,a.head-tab.active, a.head-tab:hover,#inboxLink, #inboxLink.empty:hover,.head-link:hover {';
+            cssStr += 'border: 1px solid ' + localStorage["main-color"] + ';}';
+            cssStr += 'a.bookmarklet, #settings-logout-link,.action,.filter-setting.active .filter-name,.head-link:hover,.tab-bar a:hover, .tab-bar a.active,a.head-tab.active, a.head-tab:hover,#inboxLink, #inboxLink.empty:hover,.head-link:hover {';
             cssStr += 'color: ' + localStorage["main-color"] + ';}';
             cssStr += 'a, .link {';
-            cssStr += 'color: ' + localStorage["second-color"] + ';}';
+            cssStr += 'color: ' + localStorage["link-color"] + ';}';
             cssStr += '.confirm-button, input[type=button], input[type=submit] {';
-            cssStr += 'color: ' + localStorage["third-color"] + ';}';
-            cssStr += '.confirm-button:hover, input[type=button]:hover, input[type=button]:focus, input[type=submit]:hover, input[type=submit]:focus {background-color: #F5F7F6 !important;}';
+            cssStr += 'color: ' + localStorage["btn-color"] + ';}';
+            cssStr += '.warn{';
+            cssStr += 'color: ' + localStorage["warn-color"] + ';}';
+            cssStr += '.confirm-button:hover, input[type=button]:hover, input[type=button]:focus, input[type=submit]:hover, input[type=submit]:focus {background-color: #F5F7F6;}';
+            cssStr += 'input[type=button].cancel, input[type=button]:disabled, input[type=submit]:disabled, input[type=submit].cancel{';
+            cssStr += 'background-color: ' + localStorage["cancelBtn-bg-color"] + ';color: ' + localStorage["cancelBtn-color"] + ';}';
+            cssStr += '.confirm-button:hover, input[type=button]:hover, input[type=button]:focus, input[type=submit]:hover, input[type=submit]:focus {';
+            cssStr += 'background-color: ' + localStorage["btn-hover-bg-color"] + '; color:  ' + localStorage["btn-hover-color"] + ';}';
 
-            return cssStr;
+
+
+            if ($styleEl.length < 1) {
+                $('body').append('<style id="pcp-style"></style>');
+            }
+            $styleEl.html(cssStr);
         },
         // html form
         settingsHtml: function () {
@@ -126,7 +164,7 @@
             if (p._hasPushState) {
                 anchors.each(function () {
                     this.href = '/' + $(this).attr('href').substr(
-                            1);
+                        1);
                 });
             }
             anchors.fastclick(this.handleHashLink.bind(this));
@@ -135,4 +173,4 @@
             PCC.init();
         };
     });
-})(jQuery);
+})();
