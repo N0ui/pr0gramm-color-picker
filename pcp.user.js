@@ -5,8 +5,8 @@
 // @include		      http://*pr0gramm.com*
 // @include		      https://*pr0gramm.com*
 // @version		      0.1
-// @updateURL	      https://raw.githubusercontent.com/N0ui/pr0gramm-color-picker/master/pcp.js
-// @downloadURL	      https://raw.githubusercontent.com/N0ui/pr0gramm-color-picker/master/pcp.js
+// @updateURL	      https://raw.githubusercontent.com/N0ui/pr0gramm-color-picker/master/pcp.user.js
+// @downloadURL	      https://raw.githubusercontent.com/N0ui/pr0gramm-color-picker/master/pcp.user.js
 // @copyright	      2015+, N0ui
 // @description	      alles bleibt hier nicht so wie es ist! (Für den der will)
 // @icon		      http://pr0gramm.com/media/pr0gramm-favicon.png
