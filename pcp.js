@@ -48,7 +48,7 @@
             desc: 'Button Hover Text',
             key: 'btn-hover-color',
             value: '#555555'
-        ],
+        }],
 
         // style
         // style
@@ -72,8 +72,9 @@
             cssStr += 'background-color: ' + localStorage["cancelBtn-bg-color"] + ';color: ' + localStorage["cancelBtn-color"] + ';}';
             cssStr += '.confirm-button:hover, input[type=button]:hover, input[type=button]:focus, input[type=submit]:hover, input[type=submit]:focus {';
             cssStr += 'background-color: ' + localStorage["btn-hover-bg-color"] + '; color:  ' + localStorage["btn-hover-color"] + ';}';
-
-
+            cssStr += 'background-color: ' + localStorage["btn-hover-bg-color"] + '; color:  ' + localStorage["btn-hover-color"] + ';}';
+            
+            cssStr += '.pcp-input-outer {display:block;margin: 0 0 10px 0;}.pcp-label {width: 40%; display:inline-block !important;}.pcp-color{padding: 0;width: 50px;display: inline-block;}#pcp-reset {border: 1px solid #fff;display: inline-block;padding: 8px 20px;cursor:pointer;}';
 
             if ($styleEl.length < 1) {
                 $('body').append('<style id="pcp-style"></style>');
@@ -86,8 +87,8 @@
             settingsHtmlStr += '<div class="form-section" id="settings-pcp">';
             settingsHtmlStr += '<h2>pr0gramm Farben</h2> <h3>Stell einfach deine Farben ein</h3>';
             $.each(this.colorNames, function (i, v) {
-                settingsHtmlStr += '<label class="radio" for="pcp-' + v.key + '">' + v.desc + '</label>';
-                settingsHtmlStr += '<input type="color" class="pcp-color" id="pcp-' + v.key + '">';
+                settingsHtmlStr += '<div class="pcp-input-outer"><label class="pcp-label" for="pcp-' + v.key + '">' + v.desc + '</label>';
+                settingsHtmlStr += '<input type="color" class="pcp-color" id="pcp-' + v.key + '"></div>';
             });
             settingsHtmlStr += '<br><br><div id="pcp-reset">Farben zurücksetzen</div>';
             return settingsHtmlStr;
