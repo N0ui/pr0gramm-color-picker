@@ -56,19 +56,22 @@
             desc: 'Tag Hintergrund',
             key: 'tag-bg-color',
             value: '#2A2E31'
+        }, {
+            desc: 'Tag Text',
+            key: 'tag-color',
+            value: '#F5F7F6'
         }],
 
-        // style
         // style
         cssStyle: function () {
             var $styleEl = $('#pcp-style'),
                 cssStr = 'html, body, h3, .tab-bar a, .head-link, a#inboxLink, #inboxLink.empty, #search-submit-inline, .user {color: ' + localStorage["main-font-color"] + ';}';
             cssStr += 'input.box-from-label:checked + label:before {background-color: ' + localStorage["main-font-color"] + ';}input.box-from-label + label:before {border: 1px solid ' + localStorage["main-font-color"] + ';}';
-            cssStr += '#filter-save,.confirm-button, input[type=button], input[type=submit],.filter-setting.active .filter-check, .loader > div {';
+            cssStr += '#filter-save,.confirm-button, input[type=button], input[type=submit],.filter-setting.active .filter-check, .loader > div, div.stream-next:hover span.stream-next-icon, div.stream-prev:hover span.stream-prev-icon {';
             cssStr += 'background-color: ' + localStorage["main-color"] + ';}';
             cssStr += '.filter-setting.active .filter-check, #upload-droparea {';
             cssStr += 'border: 1px solid ' + localStorage["main-color"] + ';}';
-            cssStr += 'a.bookmarklet, #settings-logout-link,.action,.filter-setting.active .filter-name,.head-link:hover,.tab-bar a:hover, .tab-bar a.active,a.head-tab.active, a.head-tab:hover,#inboxLink, #inboxLink.empty:hover,.head-link:hover, div.tagsinput span.tag a {';
+            cssStr += 'a.bookmarklet, #search-submit-inline:hover, #settings-logout-link,.action,.filter-setting.active .filter-name,.head-link:hover,.tab-bar a:hover, .tab-bar a.active,a.head-tab.active, a.head-tab:hover,#inboxLink, #inboxLink.empty:hover,.head-link:hover, div.tagsinput span.tag a, .vote-fav.faved, .vote-fav:hover {';
             cssStr += 'color: ' + localStorage["main-color"] + ';}';
             cssStr += 'a, .link {';
             cssStr += 'color: ' + localStorage["link-color"] + ';}';
@@ -82,6 +85,7 @@
             cssStr += '.confirm-button:hover, input[type=button]:hover, input[type=button]:focus, input[type=submit]:hover, input[type=submit]:focus {';
             cssStr += 'background-color: ' + localStorage["btn-hover-bg-color"] + '; color:  ' + localStorage["btn-hover-color"] + ';}';
             cssStr += 'span.tag {background-color: ' + localStorage["tag-bg-color"] + ' !important;}';
+            cssStr += 'a.tag-link {color: ' + localStorage["tag-color"] + ';}';
             
             cssStr += '.pcp-input-outer {display:block;margin: 0 0 10px 0;}.pcp-label {width: 40%; display:inline-block !important;}.pcp-color{padding: 0;width: 50px;display: inline-block;}#pcp-reset {border: 1px solid #fff;display: inline-block;padding: 8px 20px;cursor:pointer;}';
 
