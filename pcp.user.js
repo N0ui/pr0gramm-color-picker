@@ -71,7 +71,7 @@
             cssStr += 'background-color: ' + localStorage["main-color"] + ';}';
             cssStr += '.filter-setting.active .filter-check, #upload-droparea {';
             cssStr += 'border: 1px solid ' + localStorage["main-color"] + ';}';
-            cssStr += '.vote-up:hover, .voted-down .vote-up:hover, .voted-up .vote-up:hover, .voted-up .vote-up, a.bookmarklet, #search-submit-inline:hover, #settings-logout-link,.action,.filter-setting.active .filter-name,.head-link:hover,.tab-bar a:hover, .tab-bar a.active,a.head-tab.active, a.head-tab:hover,#inboxLink, #inboxLink.empty:hover,.head-link:hover, div.tagsinput span.tag a, .vote-fav.faved, .vote-fav:hover {';
+            cssStr += 'div.overlay-tabs span.overlay-link:hover, div.overlay-tabs span.active,#upload-droparea.active, #key-indicator, a.item-fullsize-link:hover, .vote-up:hover, .voted-down .vote-up:hover, .voted-up .vote-up:hover, .voted-up .vote-up, a.bookmarklet, #search-submit-inline:hover, #settings-logout-link,.action,.filter-setting.active .filter-name,.head-link:hover,.tab-bar a:hover, .tab-bar a.active,a.head-tab.active, a.head-tab:hover,#inboxLink, #inboxLink.empty:hover,.head-link:hover, div.tagsinput span.tag a, .vote-fav.faved, .vote-fav:hover {';
             cssStr += 'color: ' + localStorage["main-color"] + ';}';
             cssStr += 'a, .link {';
             cssStr += 'color: ' + localStorage["link-color"] + ';}';
@@ -87,7 +87,7 @@
             cssStr += 'span.tag {background-color: ' + localStorage["tag-bg-color"] + ' !important;}';
             cssStr += 'a.tag-link {color: ' + localStorage["tag-color"] + ';}';
             
-            cssStr += '.pcp-input-outer {display:block;margin: 0 0 10px 0;}.pcp-label {width: 40%; display:inline-block !important;}.pcp-color{padding: 0;width: 50px;display: inline-block;}#pcp-reset {border: 1px solid #fff;display: inline-block;padding: 8px 20px;cursor:pointer;}';
+            cssStr += '.pcp-input-outer {display:blofck;margin: 0 0 10px 0;}.pcp-label {width: 40%; display:inline-block !important;}.pcp-color{padding: 0;width: 50px;display: inline-block;}#pcp-reset {border: 1px solid #fff;display: inline-block;padding: 8px 20px;cursor:pointer;}';
 
             if ($styleEl.length < 1) {
                 $('body').append('<style id="pcp-style"></style>');
