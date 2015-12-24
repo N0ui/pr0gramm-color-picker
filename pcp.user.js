@@ -71,7 +71,7 @@
             cssStr += 'background-color: ' + localStorage["main-color"] + ';}';
             cssStr += '.filter-setting.active .filter-check, #upload-droparea {';
             cssStr += 'border: 1px solid ' + localStorage["main-color"] + ';}';
-            cssStr += 'a.bookmarklet, #search-submit-inline:hover, #settings-logout-link,.action,.filter-setting.active .filter-name,.head-link:hover,.tab-bar a:hover, .tab-bar a.active,a.head-tab.active, a.head-tab:hover,#inboxLink, #inboxLink.empty:hover,.head-link:hover, div.tagsinput span.tag a, .vote-fav.faved, .vote-fav:hover {';
+            cssStr += '.vote-up:hover, .voted-down .vote-up:hover, .voted-up .vote-up:hover, .voted-up .vote-up, a.bookmarklet, #search-submit-inline:hover, #settings-logout-link,.action,.filter-setting.active .filter-name,.head-link:hover,.tab-bar a:hover, .tab-bar a.active,a.head-tab.active, a.head-tab:hover,#inboxLink, #inboxLink.empty:hover,.head-link:hover, div.tagsinput span.tag a, .vote-fav.faved, .vote-fav:hover {';
             cssStr += 'color: ' + localStorage["main-color"] + ';}';
             cssStr += 'a, .link {';
             cssStr += 'color: ' + localStorage["link-color"] + ';}';
