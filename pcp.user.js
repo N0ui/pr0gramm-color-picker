@@ -4,7 +4,7 @@
 // @namespace	      pcp
 // @include		      http://*pr0gramm.com*
 // @include		      https://*pr0gramm.com*
-// @version		      0.1
+// @version		      0.2
 // @updateURL	      https://raw.githubusercontent.com/N0ui/pr0gramm-color-picker/master/pcp.user.js
 // @downloadURL	      https://raw.githubusercontent.com/N0ui/pr0gramm-color-picker/master/pcp.user.js
 // @copyright	      2015+, N0ui
@@ -17,6 +17,9 @@
     var PCC = {
         // used colors
         colorNames: [{
+            key: 'html',
+            html: '<h4>Hauptfarben</h4>'
+        }, {
             desc: 'Hauptfarbe',
             key: 'main-color',
             value: '#ee4d2e'
@@ -29,13 +32,12 @@
             key: 'link-color',
             value: '#75c0c7'
         }, {
+            key: 'html',
+            html: '<br><h4>Buttons</h4>'
+        }, {
             desc: 'Buttontext',
             key: 'btn-color',
             value: '#f2f5f4'
-        }, {
-            desc: 'Warnung',
-            key: 'warn-color',
-            value: '#fc8833'
         }, {
             desc: 'Abbrechen Button Hintergrund',
             key: 'cancelBtn-bg-color',
@@ -53,6 +55,9 @@
             key: 'btn-hover-color',
             value: '#555555'
         }, {
+            key: 'html',
+            html: '<br><h4>Video & Tags</h4>'
+        }, {
             desc: 'Tag Hintergrund',
             key: 'tag-bg-color',
             value: '#2A2E31'
@@ -60,6 +65,17 @@
             desc: 'Tag Text',
             key: 'tag-color',
             value: '#F5F7F6'
+        }, {
+            desc: 'Video Prozessbalken',
+            key: 'video-bg-color',
+            value: '#75c0c7'
+        }, {
+            key: 'html',
+            html: '<br><h4>Sonstiges</h4>'
+        }, {
+            desc: 'Warnung',
+            key: 'warn-color',
+            value: '#fc8833'
         }],
 
         // style
@@ -86,7 +102,8 @@
             cssStr += 'background-color: ' + localStorage["btn-hover-bg-color"] + '; color:  ' + localStorage["btn-hover-color"] + ';}';
             cssStr += 'span.tag {background-color: ' + localStorage["tag-bg-color"] + ' !important;}';
             cssStr += 'a.tag-link {color: ' + localStorage["tag-color"] + ';}';
-            
+            cssStr += 'div.video-position {background-color: ' + localStorage["video-bg-color"] + ';}';
+
             cssStr += '.pcp-input-outer {display:blofck;margin: 0 0 10px 0;}.pcp-label {width: 40%; display:inline-block !important;}.pcp-color{padding: 0;width: 50px;display: inline-block;}#pcp-reset {border: 1px solid #fff;display: inline-block;padding: 8px 20px;cursor:pointer;}';
 
             if ($styleEl.length < 1) {
@@ -100,8 +117,12 @@
             settingsHtmlStr += '<div class="form-section" id="settings-pcp">';
             settingsHtmlStr += '<h2>pr0gramm Farben</h2> <h3>Stell einfach deine Farben ein</h3>';
             $.each(this.colorNames, function (i, v) {
-                settingsHtmlStr += '<div class="pcp-input-outer"><label class="pcp-label" for="pcp-' + v.key + '">' + v.desc + '</label>';
-                settingsHtmlStr += '<input type="color" class="pcp-color" id="pcp-' + v.key + '"></div>';
+                if (v.key !== 'html') {
+                    settingsHtmlStr += '<div class="pcp-input-outer"><label class="pcp-label" for="pcp-' + v.key + '">' + v.desc + '</label>';
+                    settingsHtmlStr += '<input type="color" class="pcp-color" id="pcp-' + v.key + '"></div>';
+                } else {
+                    settingsHtmlStr += v.html;
+                }
             });
             settingsHtmlStr += '<br><br><div id="pcp-reset">Farben zurücksetzen</div>';
             return settingsHtmlStr;
@@ -109,7 +130,9 @@
         // reset all colors
         reset: function () {
             $.each(this.colorNames, function (i, v) {
-                localStorage.removeItem(v.key);
+                if (v.key !== 'html') {
+                    localStorage.removeItem(v.key);
+                }
             });
 
             this.init();
@@ -117,7 +140,9 @@
         // update colors
         update: function () {
             $.each(this.colorNames, function (i, v) {
-                localStorage[v.key] = $('#pcp-' + v.key).val();
+                if (v.key !== 'html') {
+                    localStorage[v.key] = $('#pcp-' + v.key).val();
+                }
             });
 
             $('#pcp-style').html(this.cssStyle());
@@ -129,7 +154,9 @@
             // set default colors
             if (typeof localStorage["main-color"] === 'undefined' || localStorage["main-color"] === '') {
                 $.each(this.colorNames, function (i, v) {
-                    localStorage[v.key] = v.value;
+                    if (v.key !== 'html') {
+                        localStorage[v.key] = v.value;
+                    }
                 });
             }
 
@@ -145,7 +172,9 @@
             $styleEl.html(this.cssStyle());
 
             $.each(this.colorNames, function (i, v) {
-                $('#pcp-' + v.key).val(localStorage[v.key]);
+                if (v.key !== 'html') {
+                    $('#pcp-' + v.key).val(localStorage[v.key]);
+                }
             });
         }
     };
@@ -178,7 +207,7 @@
             if (p._hasPushState) {
                 anchors.each(function () {
                     this.href = '/' + $(this).attr('href').substr(
-                        1);
+                            1);
                 });
             }
             anchors.fastclick(this.handleHashLink.bind(this));
