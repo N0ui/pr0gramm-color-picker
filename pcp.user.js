@@ -4,7 +4,7 @@
 // @namespace	      pcp
 // @include		      http://*pr0gramm.com*
 // @include		      https://*pr0gramm.com*
-// @version		      0.2
+// @version		      1.0
 // @updateURL	      https://raw.githubusercontent.com/N0ui/pr0gramm-color-picker/master/pcp.user.js
 // @downloadURL	      https://raw.githubusercontent.com/N0ui/pr0gramm-color-picker/master/pcp.user.js
 // @copyright	      2015+, N0ui
@@ -24,13 +24,25 @@
             key: 'main-color',
             value: '#ee4d2e'
         }, {
+            desc: 'Hintergrund',
+            key: 'bg-color',
+            value: '#161618'
+        }, {
             desc: 'Standard Schriftfarbe',
             key: 'main-font-color',
             value: '#f2f5f4'
         }, {
+            desc: 'Standard Schriftfarbe 2 (grau)',
+            key: 'second-main-font-color',
+            value: '#888888'
+        }, {
             desc: 'Linkfarbe',
             key: 'link-color',
             value: '#75c0c7'
+        }, {
+            desc: 'Linkfarbe Hover',
+            key: 'link-color-hover',
+            value: '#F5F7F6'
         }, {
             key: 'html',
             html: '<br><h4>Buttons</h4>'
@@ -77,11 +89,30 @@
             key: 'warn-color',
             value: '#fc8833'
         }],
+        // calculate brightness (http://www.sitepoint.com/javascript-generate-lighter-darker-color/)
+        colorLuminance: function (hex, lum) {
+            // validate hex string
+            hex = String(hex).replace(/[^0-9a-f]/gi, '');
+            if (hex.length < 6) {
+                hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];
+            }
+            lum = lum || 0;
 
+            // convert to decimal and change luminosity
+            var rgb = "#",
+                c, i;
+            for (i = 0; i < 3; i++) {
+                c = parseInt(hex.substr(i * 2, 2), 16);
+                c = Math.round(Math.min(Math.max(0, c + (c * lum)), 255)).toString(16);
+                rgb += ("00" + c).substr(c.length);
+            }
+
+            return rgb;
+        },
         // style
         cssStyle: function () {
             var $styleEl = $('#pcp-style'),
-                cssStr = 'html, body, h3, .tab-bar a, .head-link, a#inboxLink, #inboxLink.empty, #search-submit-inline, .user {color: ' + localStorage["main-font-color"] + ';}';
+                cssStr = 'html, body, h3, .tab-bar a, .head-link, a#inboxLink, #inboxLink.empty, #search-submit-inline, .user, .user-score {color: ' + localStorage["main-font-color"] + ';}';
             cssStr += 'input.box-from-label:checked + label:before {background-color: ' + localStorage["main-font-color"] + ';}input.box-from-label + label:before {border: 1px solid ' + localStorage["main-font-color"] + ';}';
             cssStr += '#filter-save,.confirm-button, input[type=button], input[type=submit],.filter-setting.active .filter-check, .loader > div, div.stream-next:hover span.stream-next-icon, div.stream-prev:hover span.stream-prev-icon, .user-follow, .user-unfollow {';
             cssStr += 'background-color: ' + localStorage["main-color"] + ';}';
@@ -89,8 +120,10 @@
             cssStr += 'border: 1px solid ' + localStorage["main-color"] + ';}';
             cssStr += 'div.overlay-tabs span.overlay-link:hover, div.overlay-tabs span.active,#upload-droparea.active, #key-indicator, a.item-fullsize-link:hover, .vote-up:hover, .voted-down .vote-up:hover, .voted-up .vote-up:hover, .voted-up .vote-up, a.bookmarklet, #search-submit-inline:hover, #settings-logout-link,.action,.filter-setting.active .filter-name,.head-link:hover,.tab-bar a:hover, .tab-bar a.active,a.head-tab.active, a.head-tab:hover,#inboxLink, #inboxLink.empty:hover,.head-link:hover, div.tagsinput span.tag a, .vote-fav.faved, .vote-fav:hover {';
             cssStr += 'color: ' + localStorage["main-color"] + ';}';
-            cssStr += 'a, .link {';
+            cssStr += 'a, .link, a.user:hover, a.tag-link:hover, span.tag.voted-down a.tag-link:hover {';
             cssStr += 'color: ' + localStorage["link-color"] + ';}';
+            cssStr += 'a:hover, .link:hover, .action:hover {';
+            cssStr += 'color: ' + localStorage["link-color-hover"] + ';}';
             cssStr += '.confirm-button, input[type=button], input[type=submit], .user-follow, .user-unfollow {';
             cssStr += 'color: ' + localStorage["btn-color"] + ';}';
             cssStr += '.warn{';
@@ -103,6 +136,15 @@
             cssStr += 'span.tag {background-color: ' + localStorage["tag-bg-color"] + ' !important;}';
             cssStr += 'a.tag-link {color: ' + localStorage["tag-color"] + ';}';
             cssStr += 'div.video-position {background-color: ' + localStorage["video-bg-color"] + ';}';
+
+            cssStr += '.tab-bar span, .user-stats, div.comment-foot {color: ' + localStorage["second-main-font-color"] + ';}';
+            cssStr += 'a.head-tab {color: ' + this.colorLuminance(localStorage["second-main-font-color"], 0.2) + ';}';
+            
+            
+            cssStr += 'html, body, #footer-links, div.item-container {background-color: ' + localStorage["bg-color"] + ';}';
+            cssStr += '#head-content, input, textarea {background-color: ' + this.colorLuminance(localStorage["bg-color"], -0.5) + ';}';
+            cssStr += 'div.comment-foot, div.comment-box div.comment-box {border-color: ' + this.colorLuminance(localStorage["bg-color"], -0.3) + ';}';
+            cssStr += 'input.q {background-color: ' + this.colorLuminance(localStorage["bg-color"], -0.3) + ';}';
 
             cssStr += '.pcp-input-outer {display:blofck;margin: 0 0 10px 0;}.pcp-label {width: 40%; display:inline-block !important;}.pcp-color{padding: 0;width: 50px;display: inline-block;}#pcp-reset {border: 1px solid #fff;display: inline-block;padding: 8px 20px;cursor:pointer;}';
 
@@ -207,7 +249,7 @@
             if (p._hasPushState) {
                 anchors.each(function () {
                     this.href = '/' + $(this).attr('href').substr(
-                            1);
+                        1);
                 });
             }
             anchors.fastclick(this.handleHashLink.bind(this));
