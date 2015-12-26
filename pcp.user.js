@@ -83,7 +83,7 @@
             var $styleEl = $('#pcp-style'),
                 cssStr = 'html, body, h3, .tab-bar a, .head-link, a#inboxLink, #inboxLink.empty, #search-submit-inline, .user {color: ' + localStorage["main-font-color"] + ';}';
             cssStr += 'input.box-from-label:checked + label:before {background-color: ' + localStorage["main-font-color"] + ';}input.box-from-label + label:before {border: 1px solid ' + localStorage["main-font-color"] + ';}';
-            cssStr += '#filter-save,.confirm-button, input[type=button], input[type=submit],.filter-setting.active .filter-check, .loader > div, div.stream-next:hover span.stream-next-icon, div.stream-prev:hover span.stream-prev-icon {';
+            cssStr += '#filter-save,.confirm-button, input[type=button], input[type=submit],.filter-setting.active .filter-check, .loader > div, div.stream-next:hover span.stream-next-icon, div.stream-prev:hover span.stream-prev-icon, .user-follow, .user-unfollow {';
             cssStr += 'background-color: ' + localStorage["main-color"] + ';}';
             cssStr += '.filter-setting.active .filter-check, #upload-droparea {';
             cssStr += 'border: 1px solid ' + localStorage["main-color"] + ';}';
@@ -91,14 +91,14 @@
             cssStr += 'color: ' + localStorage["main-color"] + ';}';
             cssStr += 'a, .link {';
             cssStr += 'color: ' + localStorage["link-color"] + ';}';
-            cssStr += '.confirm-button, input[type=button], input[type=submit] {';
+            cssStr += '.confirm-button, input[type=button], input[type=submit], .user-follow, .user-unfollow {';
             cssStr += 'color: ' + localStorage["btn-color"] + ';}';
             cssStr += '.warn{';
             cssStr += 'color: ' + localStorage["warn-color"] + ';}';
             cssStr += '.confirm-button:hover, input[type=button]:hover, input[type=button]:focus, input[type=submit]:hover, input[type=submit]:focus {background-color: #F5F7F6;}';
-            cssStr += 'input[type=button].cancel, input[type=button]:disabled, input[type=submit]:disabled, input[type=submit].cancel{';
+            cssStr += 'input[type=button].cancel, input[type=button]:disabled, input[type=submit]:disabled, input[type=submit].cancel {';
             cssStr += 'background-color: ' + localStorage["cancelBtn-bg-color"] + ';color: ' + localStorage["cancelBtn-color"] + ';}';
-            cssStr += '.confirm-button:hover, input[type=button]:hover, input[type=button]:focus, input[type=submit]:hover, input[type=submit]:focus {';
+            cssStr += '.confirm-button:hover, input[type=button]:hover, input[type=button]:focus, input[type=submit]:hover, input[type=submit]:focus, .user-follow:hover, .user-unfollow:hover {';
             cssStr += 'background-color: ' + localStorage["btn-hover-bg-color"] + '; color:  ' + localStorage["btn-hover-color"] + ';}';
             cssStr += 'span.tag {background-color: ' + localStorage["tag-bg-color"] + ' !important;}';
             cssStr += 'a.tag-link {color: ' + localStorage["tag-color"] + ';}';
