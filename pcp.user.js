@@ -109,6 +109,14 @@
 
             return rgb;
         },
+        convertHex: function(hex, opacity){
+            var hex = hex.replace('#','');
+            var r = parseInt(hex.substring(0,2), 16);
+            var g = parseInt(hex.substring(2,4), 16);
+            var b = parseInt(hex.substring(4,6), 16);
+
+            return 'rgba('+r+','+g+','+b+','+opacity/100+')';
+        },
         // style
         cssStyle: function () {
             var $styleEl = $('#pcp-style'),
@@ -142,9 +150,11 @@
             
             
             cssStr += 'html, body, #footer-links, div.item-container {background-color: ' + localStorage["bg-color"] + ';}';
-            cssStr += '#head-content, input, textarea {background-color: ' + this.colorLuminance(localStorage["bg-color"], -0.5) + ';}';
+            cssStr += '#head-content {background-color: ' + this.convertHex(this.colorLuminance(localStorage["bg-color"], -0.6), 80) + ';}';
+            cssStr += 'input, textarea {background-color: ' + this.colorLuminance(localStorage["bg-color"], 0.3) + ';}';
+            cssStr += 'input:focus, textarea:focus {background-color: ' + this.colorLuminance(localStorage["bg-color"], 0.4) + ';}';
             cssStr += 'div.comment-foot, div.comment-box div.comment-box {border-color: ' + this.colorLuminance(localStorage["bg-color"], -0.3) + ';}';
-            cssStr += 'input.q {background-color: ' + this.colorLuminance(localStorage["bg-color"], -0.3) + ';}';
+            cssStr += 'input.q {background-color: ' + this.convertHex(this.colorLuminance(localStorage["bg-color"], 0.4), 80) + ';}';
 
             cssStr += '.pcp-input-outer {display:blofck;margin: 0 0 10px 0;}.pcp-label {width: 40%; display:inline-block !important;}.pcp-color{padding: 0;width: 50px;display: inline-block;}#pcp-reset {border: 1px solid #fff;display: inline-block;padding: 8px 20px;cursor:pointer;}';
 
