@@ -1,16 +1,16 @@
 // ==UserScript==
-// @name		      pcp - pr0gramm color picker
-// @author		      N0ui
-// @namespace	      pcp
-// @include		      http://*pr0gramm.com*
-// @include		      https://*pr0gramm.com*
-// @version		      1.0
-// @updateURL	      https://raw.githubusercontent.com/N0ui/pr0gramm-color-picker/master/pcp.user.js
-// @downloadURL	      https://raw.githubusercontent.com/N0ui/pr0gramm-color-picker/master/pcp.user.js
-// @copyright	      2015+, N0ui
-// @description	      alles bleibt hier nicht so wie es ist! (Für den der will)
-// @icon		      http://pr0gramm.com/media/pr0gramm-favicon.png
-// @run-at            document-end
+// @name		 pcp - pr0gramm color picker
+// @author		 N0ui
+// @namespace	 pcp
+// @include		 http://*pr0gramm.com*
+// @include		 https://*pr0gramm.com*
+// @version		 1.1
+// @updateURL	 https://raw.githubusercontent.com/N0ui/pr0gramm-color-picker/master/pcp.user.js
+// @downloadURL	 https://raw.githubusercontent.com/N0ui/pr0gramm-color-picker/master/pcp.user.js
+// @copyright	 2015+, N0ui
+// @icon		 http://pr0gramm.com/media/pr0gramm-favicon.png
+// @grant        none
+// @run-at       document-end
 // ==/UserScript==
 (function () {
     'use strict';
@@ -109,13 +109,13 @@
 
             return rgb;
         },
-        convertHex: function(hex, opacity){
-            var hex = hex.replace('#','');
-            var r = parseInt(hex.substring(0,2), 16);
-            var g = parseInt(hex.substring(2,4), 16);
-            var b = parseInt(hex.substring(4,6), 16);
+        convertHex: function (hex, opacity) {
+            var hex = hex.replace('#', '');
+            var r = parseInt(hex.substring(0, 2), 16);
+            var g = parseInt(hex.substring(2, 4), 16);
+            var b = parseInt(hex.substring(4, 6), 16);
 
-            return 'rgba('+r+','+g+','+b+','+opacity/100+')';
+            return 'rgba(' + r + ',' + g + ',' + b + ',' + opacity / 100 + ')';
         },
         // style
         cssStyle: function () {
@@ -123,7 +123,8 @@
                 cssStr = 'html, body, h3, .tab-bar a, .head-link, a#inboxLink, #inboxLink.empty, #search-submit-inline, .user, .user-score {color: ' + localStorage["main-font-color"] + ';}';
             cssStr += 'input.box-from-label:checked + label:before {background-color: ' + localStorage["main-font-color"] + ';}input.box-from-label + label:before {border: 1px solid ' + localStorage["main-font-color"] + ';}';
             cssStr += '#filter-save,.confirm-button, input[type=button], input[type=submit],.filter-setting.active .filter-check, .loader > div, div.stream-next:hover span.stream-next-icon, div.stream-prev:hover span.stream-prev-icon, .user-follow, .user-unfollow {';
-            cssStr += 'background-color: ' + localStorage["main-color"] + ';}';
+            cssStr += 'background-color: ' + this.colorLuminance(localStorage["main-color"], -0.1) + ';}';
+            cssStr += '#filter-save:hover{background-color: ' + localStorage["main-color"] + ';}';
             cssStr += '.filter-setting.active .filter-check, #upload-droparea {';
             cssStr += 'border: 1px solid ' + localStorage["main-color"] + ';}';
             cssStr += 'div.overlay-tabs span.overlay-link:hover, div.overlay-tabs span.active,#upload-droparea.active, #key-indicator, a.item-fullsize-link:hover, .vote-up:hover, .voted-down .vote-up:hover, .voted-up .vote-up:hover, .voted-up .vote-up, a.bookmarklet, #search-submit-inline:hover, #settings-logout-link,.action,.filter-setting.active .filter-name,.head-link:hover,.tab-bar a:hover, .tab-bar a.active,a.head-tab.active, a.head-tab:hover,#inboxLink, #inboxLink.empty:hover,.head-link:hover, div.tagsinput span.tag a, .vote-fav.faved, .vote-fav:hover {';
@@ -147,20 +148,22 @@
 
             cssStr += '.tab-bar span, .user-stats, div.comment-foot {color: ' + localStorage["second-main-font-color"] + ';}';
             cssStr += 'a.head-tab {color: ' + this.colorLuminance(localStorage["second-main-font-color"], 0.2) + ';}';
-            
-            
+
+
             cssStr += 'html, body, #footer-links, div.item-container {background-color: ' + localStorage["bg-color"] + ';}';
             cssStr += '#head-content {background-color: ' + this.convertHex(this.colorLuminance(localStorage["bg-color"], -0.6), 80) + ';}';
             cssStr += 'input, textarea {background-color: ' + this.colorLuminance(localStorage["bg-color"], 0.3) + ';}';
             cssStr += 'input:focus, textarea:focus {background-color: ' + this.colorLuminance(localStorage["bg-color"], 0.4) + ';}';
             cssStr += 'div.comment-foot, div.comment-box div.comment-box {border-color: ' + this.colorLuminance(localStorage["bg-color"], -0.3) + ';}';
             cssStr += 'input.q {background-color: ' + this.convertHex(this.colorLuminance(localStorage["bg-color"], 0.4), 80) + ';}';
+            cssStr += 'div.product-description {background-color: ' + this.colorLuminance(localStorage["bg-color"], 0.4) + ';}';
 
             cssStr += '.pcp-input-outer {display:blofck;margin: 0 0 10px 0;}.pcp-label {width: 40%; display:inline-block !important;}.pcp-color{padding: 0;width: 50px;display: inline-block;}#pcp-reset {border: 1px solid #fff;display: inline-block;padding: 8px 20px;cursor:pointer;}';
 
             if ($styleEl.length < 1) {
                 $('body').append('<style id="pcp-style"></style>');
             }
+
             $styleEl.html(cssStr);
         },
         // html form
@@ -201,6 +204,7 @@
         },
         // init
         init: function () {
+
             var $styleEl = $('#pcp-style');
 
             // set default colors
@@ -213,7 +217,9 @@
             }
 
             // check if form exists
+
             if ($('#settings-pcp').length < 1) {
+                console.log('html');
                 $('#settings-site-form').prepend(PCC.settingsHtml());
             }
 
@@ -232,40 +238,41 @@
     };
 
 
-    // check if document is ready
-    $(function () {
+    // init
+    PCC.init();
 
-        // reset colors
-        $(document).on('click', '#pcp-reset', function () {
-            PCC.reset();
-        });
-
-        // update colors
-        $(document).on('change', '.pcp-color', function () {
-            PCC.update();
-        });
-
-        // only to show settings
-        p.View.Base.prototype.render = function () {
-            if (!this.visible) {
-                return;
-            }
-            if (!this.$container) {
-                this.$container = $(this.compiledTemplate(this.data));
-            } else {
-                this.$container.html(this.compiledTemplate(this.data));
-            }
-            var anchors = this.$container.find('a[href^="#"]');
-            if (p._hasPushState) {
-                anchors.each(function () {
-                    this.href = '/' + $(this).attr('href').substr(
-                        1);
-                });
-            }
-            anchors.fastclick(this.handleHashLink.bind(this));
-            this.needsRendering = false;
-
-            PCC.init();
-        };
+    // reset colors
+    $(document).on('click', '#pcp-reset', function () {
+        PCC.reset();
     });
+
+    // update colors
+    $(document).on('change', '.pcp-color', function () {
+        PCC.update();
+    });
+
+
+    // only to add HTML
+    p.View.Base.prototype.render = function () {
+        if (!this.visible) {
+            return;
+        }
+        if (!this.$container) {
+            this.$container = $(this.compiledTemplate(this.data));
+        } else {
+            this.$container.html(this.compiledTemplate(this.data));
+        }
+        var anchors = this.$container.find('a[href^="#"]');
+        if (p._hasPushState) {
+            anchors.each(function () {
+                this.href = '/' + $(this).attr('href').substr(
+                    1);
+            });
+        }
+        anchors.fastclick(this.handleHashLink.bind(this));
+        this.needsRendering = false;
+
+        PCC.init();
+    };
+
 })();
