@@ -4,7 +4,7 @@
 // @namespace	 pcp
 // @include		 http://*pr0gramm.com*
 // @include		 https://*pr0gramm.com*
-// @version		 1.1
+// @version		 1.2
 // @updateURL	 https://raw.githubusercontent.com/N0ui/pr0gramm-color-picker/master/pcp.user.js
 // @downloadURL	 https://raw.githubusercontent.com/N0ui/pr0gramm-color-picker/master/pcp.user.js
 // @copyright	 2015+, N0ui
@@ -14,8 +14,8 @@
 // ==/UserScript==
 (function () {
     'use strict';
-    var PCC = {
-        // used colors
+    var PCP = {
+        // colors and html
         colorNames: [{
             key: 'html',
             html: '<h4>Hauptfarben</h4>'
@@ -109,6 +109,7 @@
 
             return rgb;
         },
+        // convert hex to rgba
         convertHex: function (hex, opacity) {
             var hex = hex.replace('#', '');
             var r = parseInt(hex.substring(0, 2), 16);
@@ -119,8 +120,9 @@
         },
         // style
         cssStyle: function () {
-            var $styleEl = $('#pcp-style'),
-                cssStr = 'html, body, h3, .tab-bar a, .head-link, a#inboxLink, #inboxLink.empty, #search-submit-inline, .user, .user-score {color: ' + localStorage["main-font-color"] + ';}';
+            var $styleEl = $('#pcp-style'), cssStr = '';
+            
+            cssStr += 'html, body, h3, .tab-bar a, .head-link, a#inboxLink, #inboxLink.empty, #search-submit-inline, .user, .user-score {color: ' + localStorage["main-font-color"] + ';}';
             cssStr += 'input.box-from-label:checked + label:before {background-color: ' + localStorage["main-font-color"] + ';}input.box-from-label + label:before {border: 1px solid ' + localStorage["main-font-color"] + ';}';
             cssStr += '#filter-save,.confirm-button, input[type=button], input[type=submit],.filter-setting.active .filter-check, .loader > div, div.stream-next:hover span.stream-next-icon, div.stream-prev:hover span.stream-prev-icon, .user-follow, .user-unfollow {';
             cssStr += 'background-color: ' + this.colorLuminance(localStorage["main-color"], -0.1) + ';}';
@@ -145,11 +147,8 @@
             cssStr += 'span.tag {background-color: ' + localStorage["tag-bg-color"] + ' !important;}';
             cssStr += 'a.tag-link {color: ' + localStorage["tag-color"] + ';}';
             cssStr += 'div.video-position {background-color: ' + localStorage["video-bg-color"] + ';}';
-
             cssStr += '.tab-bar span, .user-stats, div.comment-foot {color: ' + localStorage["second-main-font-color"] + ';}';
             cssStr += 'a.head-tab {color: ' + this.colorLuminance(localStorage["second-main-font-color"], 0.2) + ';}';
-
-
             cssStr += 'html, body, #footer-links, div.item-container {background-color: ' + localStorage["bg-color"] + ';}';
             cssStr += '#head-content {background-color: ' + this.convertHex(this.colorLuminance(localStorage["bg-color"], -0.6), 80) + ';}';
             cssStr += 'input, textarea {background-color: ' + this.colorLuminance(localStorage["bg-color"], 0.3) + ';}';
@@ -157,7 +156,6 @@
             cssStr += 'div.comment-foot, div.comment-box div.comment-box {border-color: ' + this.colorLuminance(localStorage["bg-color"], -0.3) + ';}';
             cssStr += 'input.q {background-color: ' + this.convertHex(this.colorLuminance(localStorage["bg-color"], 0.4), 80) + ';}';
             cssStr += 'div.product-description {background-color: ' + this.colorLuminance(localStorage["bg-color"], 0.4) + ';}';
-
             cssStr += '.pcp-input-outer {display:blofck;margin: 0 0 10px 0;}.pcp-label {width: 40%; display:inline-block !important;}.pcp-color{padding: 0;width: 50px;display: inline-block;}#pcp-reset {border: 1px solid #fff;display: inline-block;padding: 8px 20px;cursor:pointer;}';
 
             if ($styleEl.length < 1) {
@@ -204,7 +202,7 @@
         },
         // init
         init: function () {
-
+            
             var $styleEl = $('#pcp-style');
 
             // set default colors
@@ -217,10 +215,9 @@
             }
 
             // check if form exists
-
             if ($('#settings-pcp').length < 1) {
                 console.log('html');
-                $('#settings-site-form').prepend(PCC.settingsHtml());
+                $('#settings-site-form').prepend(PCP.settingsHtml());
             }
 
             // append style
@@ -239,16 +236,16 @@
 
 
     // init
-    PCC.init();
+    PCP.init();
 
     // reset colors
     $(document).on('click', '#pcp-reset', function () {
-        PCC.reset();
+        PCP.reset();
     });
 
     // update colors
     $(document).on('change', '.pcp-color', function () {
-        PCC.update();
+        PCP.update();
     });
 
 
@@ -272,7 +269,7 @@
         anchors.fastclick(this.handleHashLink.bind(this));
         this.needsRendering = false;
 
-        PCC.init();
+        PCP.init();
     };
 
 })();
