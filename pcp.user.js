@@ -4,7 +4,7 @@
 // @namespace	 pcp
 // @include		 http://*pr0gramm.com*
 // @include		 https://*pr0gramm.com*
-// @version		 1.2
+// @version		 1.3
 // @updateURL	 https://raw.githubusercontent.com/N0ui/pr0gramm-color-picker/master/pcp.user.js
 // @downloadURL	 https://raw.githubusercontent.com/N0ui/pr0gramm-color-picker/master/pcp.user.js
 // @copyright	 2015+, N0ui
@@ -120,8 +120,10 @@
         },
         // style
         cssStyle: function () {
-            var $styleEl = $('#pcp-style'), cssStr = '';
-            
+            var $styleEl = $('#pcp-style'),
+                cssStr = '',
+                logoSvg = '';
+
             cssStr += 'html, body, h3, .tab-bar a, .head-link, a#inboxLink, #inboxLink.empty, #search-submit-inline, .user, .user-score {color: ' + localStorage["main-font-color"] + ';}';
             cssStr += 'input.box-from-label:checked + label:before {background-color: ' + localStorage["main-font-color"] + ';}input.box-from-label + label:before {border: 1px solid ' + localStorage["main-font-color"] + ';}';
             cssStr += '#filter-save,.confirm-button, input[type=button], input[type=submit],.filter-setting.active .filter-check, .loader > div, div.stream-next:hover span.stream-next-icon, div.stream-prev:hover span.stream-prev-icon, .user-follow, .user-unfollow {';
@@ -156,7 +158,24 @@
             cssStr += 'div.comment-foot, div.comment-box div.comment-box {border-color: ' + this.colorLuminance(localStorage["bg-color"], -0.3) + ';}';
             cssStr += 'input.q {background-color: ' + this.convertHex(this.colorLuminance(localStorage["bg-color"], 0.4), 80) + ';}';
             cssStr += 'div.product-description {background-color: ' + this.colorLuminance(localStorage["bg-color"], 0.4) + ';}';
+            cssStr += '#pr0gramm-logo-link svg{width: 121px;}#pr0gramm-logo-link svg path,#pr0gramm-logo-link svg polygon,#pr0gramm-logo-link svg rect{fill:' + localStorage["main-font-color"] + '}#pr0gramm-logo-link svg .pr0-sign{fill:' + localStorage["main-color"] + '}';
             cssStr += '.pcp-input-outer {display:blofck;margin: 0 0 10px 0;}.pcp-label {width: 40%; display:inline-block !important;}.pcp-color{padding: 0;width: 50px;display: inline-block;}#pcp-reset {border: 1px solid #fff;display: inline-block;padding: 8px 20px;cursor:pointer;}';
+
+
+            logoSvg += '<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1820.8 277.8" style="enable-background:new 0 0 1820.8 277.8;" xml:space="preserve">';
+            logoSvg += '<rect x="11" y="34" class="st0" width="237" height="198"></rect><g><path d="M464.8,31.8h-73.9h-29.2V221h29.2v-68h71.9c0,0,47.3-3.9,47.3-61.6C510.1,33.7,464.8,31.8,464.8,31.8z M460.3,121.8h-69.3 v-59h66.7c0,0,21.4,2.6,21.4,29.5C479,119.2,460.3,121.8,460.3,121.8z"/>';
+            logoSvg += '<path d="M669.5,199.6c-4-6.2-42.8-51.8-42.8-51.8s47.3-1.9,47.3-59.6c0-57.7-45.4-56.4-45.4-56.4h-69.3h-29.2V221h29.2v-73.2h25.9 c0,0,19.5,18.1,30,30.9c11.4,13.9,37.6,46.2,48.4,46.2c14.9,0,15.5,0,15.5,0v-23.3C679.2,201.5,671.5,202.6,669.5,199.6z M559.4,116.7V62.9h62.2c0,0,21.4-0.6,21.4,26.2s-18.8,27.5-18.8,27.5H559.4z"/>';
+            logoSvg += '<path d="M1181.7,199.6c-4-6.2-42.8-51.8-42.8-51.8s47.3-1.9,47.3-59.6c0-57.7-45.4-56.4-45.4-56.4h-69.3h-29.2V221h29.2v-73.2h25.9 c0,0,19.5,18.1,30,30.9c11.4,13.9,37.6,46.2,48.4,46.2c14.9,0,15.5,0,15.5,0v-23.3C1191.4,201.5,1183.6,202.6,1181.7,199.6z M1071.5,116.7V62.9h62.2c0,0,21.4-0.6,21.4,26.2s-18.8,27.5-18.8,27.5H1071.5z"/>';
+            logoSvg += '<path d="M1313.5,31.8h-32.4h-3.9l-70,189.2h33.7l20.9-54.4h71l20.9,54.4h33.7l-70-189.2H1313.5z M1271.7,140.9l25.7-66.9l25.7,66.9 H1271.7z"/>';
+            logoSvg += '<polygon points="1569.5,31.8 1557.8,31.8 1503.7,161 1449.6,31.8 1440.5,31.8 1413.3,31.8 1411.4,31.8 1411.4,221 1440.5,221 1440.5,94.5 1485.9,198.9 1487.8,198.9 1519.6,198.9 1521.5,198.9 1569.5,88.5 1569.5,221 1598.6,221 1598.6,31.8 1594.1,31.8"/>';
+            logoSvg += '<polygon points="1816.3,31.8 1791.7,31.8 1780,31.8 1725.9,161 1671.8,31.8 1662.7,31.8 1635.5,31.8 1633.6,31.8 1633.6,221 1662.7,221 1662.7,94.5 1708.1,198.9 1710,198.9 1741.8,198.9 1743.7,198.9 1791.7,88.5 1791.7,221 1820.8,221 1820.8,31.8"/>';
+            logoSvg += '<path d="M944.3,58.3c19.9,0,41.9,15.5,41.9,15.5l21.7-19c-17.2-17.7-45.9-23.1-45.9-23.1s-22-6.3-55.7,2.4 c-33.7,8.6-48.8,48.4-48.8,48.4s-15.5,47.1-1.7,85.5c13.8,38.4,52.7,59.6,88.6,59.6c35.9,0,63.5-19.4,63.5-19.4v-13.1v-7.2v-32.4 v-29.2h-29.2h-34.4v29.2h34.4v31.5c0,0-31.8,15.5-55.8,5.2c-37.2-16.1-38.7-28.9-38.7-75.6S924.4,58.3,944.3,58.3z"/>';
+            logoSvg += '<path d="M763.7,31.8c0,0-47.5-3.6-62.2,58c-12.4,52.2,0.5,87.1,15.5,110.7c7.3,11.4,27.7,27.2,46.6,27.2c28.9,0,43-15.8,48.8-24.2 c10.8-15.5,21.6-30.2,21.6-75.2c0-44.9-14.7-65.4-14.7-65.4S806.4,31.8,763.7,31.8z M794.1,174.7c-4,7.4-12.5,22.1-28.4,22.1 s-25.1-15-28.9-23.5c-5.9-13-14.6-31.5-6.3-72.1c8.3-40.6,34.1-38.3,34.1-38.3c23.5,0,30.6,20.5,30.6,20.5s8.1,13.6,8.1,43.2 C803.2,156.3,800.2,163.4,794.1,174.7z"/>';
+            logoSvg += '<path class="pr0-sign" d="M277.8,11.9c0-0.4,0-0.9,0-1.3c0-1.9-0.6-3.8-1.6-5.4c-2.3-3.6-5.6-5.2-9.8-5.2c-85,0-170,0-255,0c-0.2,0-0.4,0-0.6,0 C9,0,7.3,0.4,5.8,1.3C1.9,3.4,0,6.8,0,11.2c0,76.5,0,153.1,0,229.6c0,8.7,0,17.4,0,26.1c0,2.2,0.6,4.3,1.9,6.1 c2.3,3.2,5.4,4.8,9.4,4.8c85.1,0,170.2,0,255.3,0c0.3,0,0.5,0,0.8,0c2.7-0.1,5-1,6.9-2.8c2.5-2.3,3.5-5.1,3.5-8.5 c0-42.5,0-85.1,0-127.6C277.8,96.6,277.8,54.2,277.8,11.9z M68.9,206.5c-2.8,2.4-6,4.1-9.8,4.5c-3.7,0.4-6.9-0.5-9.4-3.6 c-0.7-0.9-1.4-1.7-2.1-2.6c-2.6-2.8-3-6.1-2.1-9.7c1-3.6,3-6.5,5.8-8.9c15.5-13,30.9-26,46.4-39c5-4.2,10-8.4,15-12.6 c0.1-0.1,0.2-0.2,0.4-0.3c-2.4-2.1-4.8-4.2-7.2-6.3c-17.8-15.5-35.7-31-53.5-46.5c-3.1-2.7-5.3-5.9-6.1-10 c-0.6-3.2-0.1-6.1,2.2-8.6c0.8-0.9,1.6-1.8,2.4-2.7c2.2-2.7,5.1-3.7,8.4-3.5c3.9,0.2,7.2,1.7,10.1,4.2c6.3,5.3,12.5,10.8,18.7,16.2 c17.4,15.1,34.8,30.2,52.2,45.3c2.4,2.1,4.4,4.5,5.7,7.3c1.7,3.7,1.5,7.3-0.7,10.9c-2.4,4-6,6.6-9.5,9.5 C113.6,168.9,91.2,187.7,68.9,206.5z M228.4,200.9c0,1.5-0.4,1.9-1.9,1.9c-14.2,0-28.3,0-42.5,0c-14.2,0-28.4,0-42.5,0 c-1.5,0-1.9-0.4-1.9-2c0-7,0-13.9,0-20.9c0-1.6,0.4-2,2-2c28.3,0,56.6,0,85,0c1.5,0,1.9,0.5,1.9,2 C228.4,186.9,228.4,193.9,228.4,200.9z"/></g></svg>';
+
+
+            $('#pr0gramm-logo-link').html(logoSvg);
+
 
             if ($styleEl.length < 1) {
                 $('body').append('<style id="pcp-style"></style>');
@@ -202,7 +221,7 @@
         },
         // init
         init: function () {
-            
+
             var $styleEl = $('#pcp-style');
 
             // set default colors
@@ -216,7 +235,6 @@
 
             // check if form exists
             if ($('#settings-pcp').length < 1) {
-                console.log('html');
                 $('#settings-site-form').prepend(PCP.settingsHtml());
             }
 
