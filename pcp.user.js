@@ -2,8 +2,7 @@
 // @name		 pcp - pr0gramm color picker
 // @author		 N0ui
 // @namespace	 pcp
-// @include		 http://*pr0gramm.com*
-// @include		 https://*pr0gramm.com*
+// @include		 *://pr0gramm.com*
 // @version		 1.3
 // @updateURL	 https://raw.githubusercontent.com/N0ui/pr0gramm-color-picker/master/pcp.user.js
 // @downloadURL	 https://raw.githubusercontent.com/N0ui/pr0gramm-color-picker/master/pcp.user.js
