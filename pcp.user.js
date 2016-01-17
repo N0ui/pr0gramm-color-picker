@@ -282,18 +282,15 @@
             }
         },
         // set theme
-        setTheme: function(e) {
-            var $element =  $(e.currentTarget);
-            
-            if(typeof PCP.themes[$element.index()] !== 'undefined') {
+        setTheme: function (e) {
+            var $element = $(e.currentTarget);
+
+            if (typeof PCP.themes[$element.index()] !== 'undefined') {
                 $.each(PCP.themes[$element.index()].data, function (i, v) {
-                    console.log(v.key, v.value);
-                    
                     localStorage[v.key] = v.value;
                 });
             }
-            
-            
+
             PCP.update(true, false);
         },
         // init
@@ -320,7 +317,6 @@
                 $('head').append('<style id="pcp-style"></style>');
             }
 
-
             this.update(true, false);
         }
     };
@@ -342,11 +338,11 @@
     $(document).on('focusout', '.pcp-color-input', function () {
         PCP.update(false, true);
     });
-    
+
     // set theme
     $(document).on('click', '.pcp-theme-btn', PCP.setTheme);
-   
-    
+
+
     // only to add HTML
     p.View.Base.prototype.render = function () {
         if (!this.visible) {
