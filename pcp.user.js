@@ -115,6 +115,12 @@
                 key: 'main-color',
                 value: '#5BB91C'
             }]
+        }, {
+            name: 'Mega Episches Blau',
+            data: [{
+                key: 'main-color',
+                value: '#008FFF'
+            }]
         }],
 
 
