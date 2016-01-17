@@ -3,7 +3,7 @@
 // @author		 N0ui
 // @namespace	 pcp
 // @include		 *://pr0gramm.com*
-// @version		 1.3
+// @version		 1.4
 // @updateURL	 https://raw.githubusercontent.com/N0ui/pr0gramm-color-picker/master/pcp.user.js
 // @downloadURL	 https://raw.githubusercontent.com/N0ui/pr0gramm-color-picker/master/pcp.user.js
 // @copyright	 2015+, N0ui
@@ -88,6 +88,30 @@
             key: 'warn-color',
             value: '#fc8833'
         }],
+
+
+        // theme array
+        themes: [{
+            name: 'Angenehmes Grün',
+            data: [{
+                key: 'main-color',
+                value: '#1db992'
+            }]
+        }, {
+            name: 'Olivgrün des Friedens',
+            data: [{
+                key: 'main-color',
+                value: '#B0AD05'
+            }]
+        }, {
+            name: 'Altes Pink',
+            data: [{
+                key: 'main-color',
+                value: '#FF0082'
+            }]
+        }],
+
+
         // calculate brightness (http://www.sitepoint.com/javascript-generate-lighter-darker-color/)
         colorLuminance: function (hex, lum) {
             // validate hex string
@@ -107,6 +131,11 @@
             }
 
             return rgb;
+        },
+        // check if hex color is valid
+        // http://stackoverflow.com/questions/8027423/how-to-check-if-a-string-is-a-valid-hex-color-representation?answertab=active#tab-top
+        isValidateHex(value) {
+            return /^#([A-Fa-f0-9]{3}$)|([A-Fa-f0-9]{6}$)/.test(value) && value.length === 7;
         },
         // convert hex to rgba
         convertHex: function (hex, opacity) {
@@ -158,9 +187,11 @@
             cssStr += 'input.q {background-color: ' + this.convertHex(this.colorLuminance(localStorage["bg-color"], 0.4), 80) + ';}';
             cssStr += 'div.product-description {background-color: ' + this.colorLuminance(localStorage["bg-color"], 0.4) + ';}';
             cssStr += '#pr0gramm-logo-link svg{width: 121px;}#pr0gramm-logo-link svg path,#pr0gramm-logo-link svg polygon,#pr0gramm-logo-link svg rect{fill:' + localStorage["main-font-color"] + '}#pr0gramm-logo-link svg .pr0-sign{fill:' + localStorage["main-color"] + '}';
-            cssStr += '.pcp-input-outer {display:blofck;margin: 0 0 10px 0;}.pcp-label {width: 40%; display:inline-block !important;}.pcp-color{padding: 0;width: 50px;display: inline-block;}#pcp-reset {border: 1px solid #fff;display: inline-block;padding: 8px 20px;cursor:pointer;}';
+            cssStr += '.pcp-input-outer {display:blofck;margin: 0 0 10px 0;}.pcp-label {width: 40%; display:inline-block !important;}.pcp-color{padding: 0;height:26px;width: 24px;display: inline-block;border: 0;background-color:transparent;}#pcp-reset {background-color: #A21F1F;display: inline-block;padding: 10px 20px;cursor:pointer;}';
+            cssStr += '.pcp-theme-list {lists-style: none; margin: 0; padding: 0;}.pcp-theme-list .pcp-theme-btn {display: inline-block; margin-right: 25px; padding: 10px 15px; border: 1px solid #fff; cursor: pointer;} .pcp-color-input {width: 150px;display:inline-block; margin-left: 20px;}';
 
 
+            // svg
             logoSvg += '<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1820.8 277.8" style="enable-background:new 0 0 1820.8 277.8;" xml:space="preserve">';
             logoSvg += '<rect x="11" y="34" class="st0" width="237" height="198"></rect><g><path d="M464.8,31.8h-73.9h-29.2V221h29.2v-68h71.9c0,0,47.3-3.9,47.3-61.6C510.1,33.7,464.8,31.8,464.8,31.8z M460.3,121.8h-69.3 v-59h66.7c0,0,21.4,2.6,21.4,29.5C479,119.2,460.3,121.8,460.3,121.8z"/>';
             logoSvg += '<path d="M669.5,199.6c-4-6.2-42.8-51.8-42.8-51.8s47.3-1.9,47.3-59.6c0-57.7-45.4-56.4-45.4-56.4h-69.3h-29.2V221h29.2v-73.2h25.9 c0,0,19.5,18.1,30,30.9c11.4,13.9,37.6,46.2,48.4,46.2c14.9,0,15.5,0,15.5,0v-23.3C679.2,201.5,671.5,202.6,669.5,199.6z M559.4,116.7V62.9h62.2c0,0,21.4-0.6,21.4,26.2s-18.8,27.5-18.8,27.5H559.4z"/>';
@@ -173,29 +204,42 @@
             logoSvg += '<path class="pr0-sign" d="M277.8,11.9c0-0.4,0-0.9,0-1.3c0-1.9-0.6-3.8-1.6-5.4c-2.3-3.6-5.6-5.2-9.8-5.2c-85,0-170,0-255,0c-0.2,0-0.4,0-0.6,0 C9,0,7.3,0.4,5.8,1.3C1.9,3.4,0,6.8,0,11.2c0,76.5,0,153.1,0,229.6c0,8.7,0,17.4,0,26.1c0,2.2,0.6,4.3,1.9,6.1 c2.3,3.2,5.4,4.8,9.4,4.8c85.1,0,170.2,0,255.3,0c0.3,0,0.5,0,0.8,0c2.7-0.1,5-1,6.9-2.8c2.5-2.3,3.5-5.1,3.5-8.5 c0-42.5,0-85.1,0-127.6C277.8,96.6,277.8,54.2,277.8,11.9z M68.9,206.5c-2.8,2.4-6,4.1-9.8,4.5c-3.7,0.4-6.9-0.5-9.4-3.6 c-0.7-0.9-1.4-1.7-2.1-2.6c-2.6-2.8-3-6.1-2.1-9.7c1-3.6,3-6.5,5.8-8.9c15.5-13,30.9-26,46.4-39c5-4.2,10-8.4,15-12.6 c0.1-0.1,0.2-0.2,0.4-0.3c-2.4-2.1-4.8-4.2-7.2-6.3c-17.8-15.5-35.7-31-53.5-46.5c-3.1-2.7-5.3-5.9-6.1-10 c-0.6-3.2-0.1-6.1,2.2-8.6c0.8-0.9,1.6-1.8,2.4-2.7c2.2-2.7,5.1-3.7,8.4-3.5c3.9,0.2,7.2,1.7,10.1,4.2c6.3,5.3,12.5,10.8,18.7,16.2 c17.4,15.1,34.8,30.2,52.2,45.3c2.4,2.1,4.4,4.5,5.7,7.3c1.7,3.7,1.5,7.3-0.7,10.9c-2.4,4-6,6.6-9.5,9.5 C113.6,168.9,91.2,187.7,68.9,206.5z M228.4,200.9c0,1.5-0.4,1.9-1.9,1.9c-14.2,0-28.3,0-42.5,0c-14.2,0-28.4,0-42.5,0 c-1.5,0-1.9-0.4-1.9-2c0-7,0-13.9,0-20.9c0-1.6,0.4-2,2-2c28.3,0,56.6,0,85,0c1.5,0,1.9,0.5,1.9,2 C228.4,186.9,228.4,193.9,228.4,200.9z"/></g></svg>';
 
 
+            // add logo
             $('#pr0gramm-logo-link').html(logoSvg);
 
 
+            // check if style tag is set
             if ($styleEl.length < 1) {
                 $('body').append('<style id="pcp-style"></style>');
             }
 
+            // insert css into style tag
             $styleEl.html(cssStr);
         },
         // html form
         settingsHtml: function () {
-            var settingsHtmlStr = '';
+            var settingsHtmlStr = '',
+                themeHtml = '';
             settingsHtmlStr += '<div class="form-section" id="settings-pcp">';
             settingsHtmlStr += '<h2>pr0gramm Farben</h2> <h3>Stell einfach deine Farben ein</h3>';
             $.each(this.colorNames, function (i, v) {
                 if (v.key !== 'html') {
-                    settingsHtmlStr += '<div class="pcp-input-outer"><label class="pcp-label" for="pcp-' + v.key + '">' + v.desc + '</label>';
-                    settingsHtmlStr += '<input type="color" class="pcp-color" id="pcp-' + v.key + '"></div>';
+                    settingsHtmlStr += '<div class="pcp-input-outer"><div class="pcp-label" for="pcp-' + v.key + '">' + v.desc + '</div>';
+                    settingsHtmlStr += '<input type="color" class="pcp-color" id="pcp-' + v.key + '">';
+                    settingsHtmlStr += '<input type="text" class="pcp-color-input" id="pcp-' + v.key + '-input"></div>';
                 } else {
                     settingsHtmlStr += v.html;
                 }
             });
-            settingsHtmlStr += '<br><br><div id="pcp-reset">Farben zurücksetzen</div>';
+
+            settingsHtmlStr += '<br><br><h2>Themes</h2><ul class="pcp-theme-list">';
+            $.each(this.themes, function (i, v) {
+                themeHtml += '<li class="pcp-theme-btn">' + v.name + '</li>';
+            });
+            themeHtml += '</ul>';
+
+            settingsHtmlStr += themeHtml;
+            settingsHtmlStr += '<br><br><hr><br><div id="pcp-reset">Alle Farben zurücksetzen (bewährtes Orange)</div><br><br><hr>';
             return settingsHtmlStr;
         },
         // reset all colors
@@ -209,14 +253,42 @@
             this.init();
         },
         // update colors
-        update: function () {
+        update: function (_isInit, _isInputUpdate) {
+            if (_isInit) {
+                $('#pcp-style').html(this.cssStyle());
+            }
             $.each(this.colorNames, function (i, v) {
                 if (v.key !== 'html') {
-                    localStorage[v.key] = $('#pcp-' + v.key).val();
+                    if (!_isInit) {
+                        if (_isInputUpdate && PCP.isValidateHex($('#pcp-' + v.key + '-input').val())) {
+                            localStorage[v.key] = $('#pcp-' + v.key + '-input').val();
+                        } else {
+                            localStorage[v.key] = $('#pcp-' + v.key).val();
+                        }
+                    }
+
+                    $('#pcp-' + v.key).val(localStorage[v.key].toLowerCase());
+                    $('#pcp-' + v.key + '-input').val(localStorage[v.key].toLowerCase());
                 }
             });
-
-            $('#pcp-style').html(this.cssStyle());
+            if (!_isInit) {
+                $('#pcp-style').html(this.cssStyle());
+            }
+        },
+        // set theme
+        setTheme: function(e) {
+            var $element =  $(e.currentTarget);
+            
+            if(typeof PCP.themes[$element.index()] !== 'undefined') {
+                $.each(PCP.themes[$element.index()].data, function (i, v) {
+                    console.log(v.key, v.value);
+                    
+                    localStorage[v.key] = v.value;
+                });
+            }
+            
+            
+            PCP.update(true, false);
         },
         // init
         init: function () {
@@ -241,16 +313,11 @@
             if ($styleEl.length < 1) {
                 $('head').append('<style id="pcp-style"></style>');
             }
-            $styleEl.html(this.cssStyle());
 
-            $.each(this.colorNames, function (i, v) {
-                if (v.key !== 'html') {
-                    $('#pcp-' + v.key).val(localStorage[v.key]);
-                }
-            });
+
+            this.update(true, false);
         }
     };
-
 
     // init
     PCP.init();
@@ -262,10 +329,18 @@
 
     // update colors
     $(document).on('change', '.pcp-color', function () {
-        PCP.update();
+        PCP.update(false, false);
     });
 
-
+    // update input color
+    $(document).on('focusout', '.pcp-color-input', function () {
+        PCP.update(false, true);
+    });
+    
+    // set theme
+    $(document).on('click', '.pcp-theme-btn', PCP.setTheme);
+   
+    
     // only to add HTML
     p.View.Base.prototype.render = function () {
         if (!this.visible) {
