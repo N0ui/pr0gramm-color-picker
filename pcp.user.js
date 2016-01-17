@@ -109,6 +109,12 @@
                 key: 'main-color',
                 value: '#FF0082'
             }]
+        }, {
+            name: 'Altschwuchtel Grün',
+            data: [{
+                key: 'main-color',
+                value: '#5BB91C'
+            }]
         }],
 
 
@@ -188,7 +194,7 @@
             cssStr += 'div.product-description {background-color: ' + this.colorLuminance(localStorage["bg-color"], 0.4) + ';}';
             cssStr += '#pr0gramm-logo-link svg{width: 121px;}#pr0gramm-logo-link svg path,#pr0gramm-logo-link svg polygon,#pr0gramm-logo-link svg rect{fill:' + localStorage["main-font-color"] + '}#pr0gramm-logo-link svg .pr0-sign{fill:' + localStorage["main-color"] + '}';
             cssStr += '.pcp-input-outer {display:blofck;margin: 0 0 10px 0;}.pcp-label {width: 40%; display:inline-block !important;}.pcp-color{padding: 0;height:26px;width: 24px;display: inline-block;border: 0;background-color:transparent;}#pcp-reset {background-color: #A21F1F;display: inline-block;padding: 10px 20px;cursor:pointer;}';
-            cssStr += '.pcp-theme-list {lists-style: none; margin: 0; padding: 0;}.pcp-theme-list .pcp-theme-btn {display: inline-block; margin-right: 25px; padding: 10px 15px; border: 1px solid #fff; cursor: pointer;} .pcp-color-input {width: 150px;display:inline-block; margin-left: 20px;}';
+            cssStr += '.pcp-theme-list {lists-style: none; margin: 0; padding: 0;}.pcp-theme-list .pcp-theme-btn {display: inline-block; margin: 0 25px 25px 0; padding: 10px 15px; border: 1px solid #fff; cursor: pointer;} .pcp-color-input {width: 150px;display:inline-block; margin-left: 20px;}';
 
 
             // svg
@@ -239,7 +245,7 @@
             themeHtml += '</ul>';
 
             settingsHtmlStr += themeHtml;
-            settingsHtmlStr += '<br><br><hr><br><div id="pcp-reset">Alle Farben zurücksetzen (bewährtes Orange)</div><br><br><hr>';
+            settingsHtmlStr += '<hr><br><div id="pcp-reset">Alle Farben zurücksetzen (bewährtes Orange)</div><br><br><hr>';
             return settingsHtmlStr;
         },
         // reset all colors
