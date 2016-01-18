@@ -121,6 +121,12 @@
                 key: 'main-color',
                 value: '#008FFF'
             }]
+        }, {
+            name: 'Aggressionsförderndes Dunkelgelb',
+            data: [{
+                key: 'main-color',
+                value: '#FF9900'
+            }]
         }],
 
 
