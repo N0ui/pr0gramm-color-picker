@@ -3,7 +3,7 @@
 // @author		 N0ui
 // @namespace	 pcp
 // @include		 *://pr0gramm.com*
-// @version		 1.5
+// @version		 1.6
 // @updateURL	 https://raw.githubusercontent.com/N0ui/pr0gramm-color-picker/master/pcp.user.js
 // @downloadURL	 https://raw.githubusercontent.com/N0ui/pr0gramm-color-picker/master/pcp.user.js
 // @copyright	 2015+, N0ui
@@ -235,15 +235,21 @@
 
             // userscript styles fot "pr0gramm.com Dick by Seglors"
             cssStr += '#com-top.active, #com-top:hover, #com-new.active, #com-new:hover{color:' + localStorage["main-color"] + ' !important;}';
-            cssStr += '.opuser .user:before{background-color:' + localStorage["main-color"] + ' !important;color: ' + localStorage["main-font-color"] + ' !important;}.comment-content a .preview, .comment-content a .preview {border-color:' + localStorage["main-color"] + ' !important;}.comment-content a .preview:before, .comment-content a .preview:after {border-color:' + localStorage["main-color"] + ' transparent !important;}';
-            
+            cssStr += '.opuser .user:before{background-color:' + localStorage["main-color"] + ' !important;color: ' + localStorage["main-font-color"] + ' !important;}.comment-content a .preview, .comment-content a .preview {border-color:' + localStorage["main-color"] + ' !important;}.comment-content a .preview:before, .comment-content a .preview:after {border-color:' + localStorage["main-color"] + ' transparent !important;}.custom_seen::after {background: ' + this.convertHex(localStorage["main-color"], 70) + ' !important;}';
+
             // cust0m pr0gramm 2.0
-            cssStr += '.cust0m_menu:hover, .cust0m_menu.active, .cust0m_trigger.active, .cust0m_trigger:hover, .cust0m_button:hover {color:' + localStorage["main-color"] + ' !important;}div.comment-op div.comment-foot, .comment-foot.custom_op{border-bottom-color:' + localStorage["main-color"] + ' !important;}';
+            cssStr += 'div.stream-next:hover span.cust0m_stream-next-icon, div.stream-prev:hover span.cust0m_stream-prev-icon,.cust0m_menu:hover, .cust0m_menu.active, .cust0m_trigger.active, .cust0m_trigger:hover, .cust0m_button:hover {color:' + localStorage["main-color"] + ' !important;}div.comment-op div.comment-foot, .comment-foot.custom_op{border-bottom-color:' + localStorage["main-color"] + ' !important;}';
             cssStr += '.highcharts-series path{stroke:' + localStorage["main-color"] + '; stroke-width: 2px;}.highcharts-markers.highcharts-tracker path{fill:' + localStorage["main-color"] + ';}.highcharts-tooltip path:nth-child(4) {stroke:' + localStorage["main-color"] + '; stroke-width: 1px;}.highcharts-series-group:first-child path {fill: #000;}';
+
+            //kfav
+            cssStr += '.kfav-save:hover {color:' + localStorage["main-color"] + ' !important;}'
 
             // op highlight
             cssStr += '.extension-is-op .user:before {background-color:' + localStorage["main-color"] + ' !important;}';
-            
+
+            // visitenkarte
+            cssStr += '.user.profile > .extended > ul > li > span > span:last-child {color:' + localStorage["main-color"] + ' !important;}';
+
             // svg
             logoSvg += '<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1820.8 277.8" style="enable-background:new 0 0 1820.8 277.8;" xml:space="preserve">';
             logoSvg += '<rect x="11" y="34" class="st0" width="237" height="198"></rect><g><path d="M464.8,31.8h-73.9h-29.2V221h29.2v-68h71.9c0,0,47.3-3.9,47.3-61.6C510.1,33.7,464.8,31.8,464.8,31.8z M460.3,121.8h-69.3 v-59h66.7c0,0,21.4,2.6,21.4,29.5C479,119.2,460.3,121.8,460.3,121.8z"/>';
@@ -287,7 +293,7 @@
 
             settingsHtmlStr += '<br><br><h2>Themes</h2><ul class="pcp-theme-list">';
             $.each(this.themes, function (i, v) {
-                themeHtml += '<li class="pcp-theme-btn">' + v.name + '</li>';
+                themeHtml += '<li class="pcp-theme-btn" style="color: ' + v.data[0].value + '; border-color: ' + v.data[0].value + '">' + v.name + '</li>';
             });
             themeHtml += '</ul>';
 
@@ -390,6 +396,7 @@
     $(document).on('click', '.pcp-theme-btn', PCP.setTheme);
 
 
+
     // only to add HTML
     p.View.Base.prototype.render = function () {
         if (!this.visible) {
@@ -409,6 +416,22 @@
         }
         anchors.fastclick(this.handleHashLink.bind(this));
         this.needsRendering = false;
+
+
+        // workaround for auto generated styles
+        setTimeout(function () {
+            $("style").not('#pcp-style').html(function (_, html) {
+                return html.replace(/#ee4d2e/g, localStorage["main-color"]);
+            });
+        }, 100);
+        
+        // replace main color for comment fav
+        $('body').on("click", ".kfav-save", function () {
+            $("style").not('#pcp-style').html(function (_, html) {
+                return html.replace(/#ee4d2e/g, localStorage["main-color"]);
+            });
+        });
+
 
         PCP.init();
     };
