@@ -3,7 +3,7 @@
 // @author		 N0ui
 // @namespace	 pcp
 // @include		 *://pr0gramm.com*
-// @version		 1.4
+// @version		 1.5
 // @updateURL	 https://raw.githubusercontent.com/N0ui/pr0gramm-color-picker/master/pcp.user.js
 // @downloadURL	 https://raw.githubusercontent.com/N0ui/pr0gramm-color-picker/master/pcp.user.js
 // @copyright	 2015+, N0ui
@@ -127,8 +127,31 @@
                 key: 'main-color',
                 value: '#FF9900'
             }]
+        }, {
+            name: 'Lebhaftes Limettengrün',
+            data: [{
+                key: 'main-color',
+                value: '#b9cc5a'
+            }]
+        }, {
+            name: 'Wohliges Warmgelb',
+            data: [{
+                key: 'main-color',
+                value: '#e3af12'
+            }]
+        }, {
+            name: 'Sonniges Steppenrot',
+            data: [{
+                key: 'main-color',
+                value: '#cc674b'
+            }]
+        }, {
+            name: 'Samtweiches Stahlweiß',
+            data: [{
+                key: 'main-color',
+                value: '#b0b0b0'
+            }]
         }],
-
 
         // calculate brightness (http://www.sitepoint.com/javascript-generate-lighter-darker-color/)
         colorLuminance: function (hex, lum) {
@@ -170,14 +193,14 @@
                 cssStr = '',
                 logoSvg = '';
 
-            cssStr += 'html, body, h3, .tab-bar a, .head-link, #search-submit-inline, .user, .user-score, #inboxLink.empty {color: ' + localStorage["main-font-color"] + ';}';
+            cssStr += 'html, body, h3, .tab-bar a, .head-link, a#inboxLink, #inboxLink.empty, #search-submit-inline, .user, .user-score {color: ' + localStorage["main-font-color"] + ';}';
             cssStr += 'input.box-from-label:checked + label:before {background-color: ' + localStorage["main-font-color"] + ';}input.box-from-label + label:before {border: 1px solid ' + localStorage["main-font-color"] + ';}';
             cssStr += '#filter-save,.confirm-button, input[type=button], input[type=submit],.filter-setting.active .filter-check, .loader > div, div.stream-next:hover span.stream-next-icon, div.stream-prev:hover span.stream-prev-icon, .user-follow, .user-unfollow {';
             cssStr += 'background-color: ' + this.colorLuminance(localStorage["main-color"], -0.1) + ';}';
             cssStr += '#filter-save:hover{background-color: ' + localStorage["main-color"] + ';}';
             cssStr += '.filter-setting.active .filter-check, #upload-droparea {';
             cssStr += 'border: 1px solid ' + localStorage["main-color"] + ';}';
-            cssStr += 'div.overlay-tabs span.overlay-link:hover, div.overlay-tabs span.active,#upload-droparea.active, #key-indicator, a.item-fullsize-link:hover, .vote-up:hover, .voted-down .vote-up:hover, .voted-up .vote-up:hover, .voted-up .vote-up, a.bookmarklet, #search-submit-inline:hover, #settings-logout-link,.action,.filter-setting.active .filter-name,.head-link:hover,.tab-bar a:hover, .tab-bar a.active,a.head-tab.active, a.head-tab:hover, a#inboxLink, a#inboxLink.empty:hover,.head-link:hover, div.tagsinput span.tag a, .vote-fav.faved, .vote-fav:hover {';
+            cssStr += 'div.overlay-tabs span.overlay-link:hover, div.overlay-tabs span.active,#upload-droparea.active, #key-indicator, a.item-fullsize-link:hover, .vote-up:hover, .voted-down .vote-up:hover, .voted-up .vote-up:hover, .voted-up .vote-up, a.bookmarklet, #search-submit-inline:hover, #settings-logout-link,.action,.filter-setting.active .filter-name,.head-link:hover,.tab-bar a:hover, .tab-bar a.active,a.head-tab.active, a.head-tab:hover,#inboxLink, #inboxLink.empty:hover,.head-link:hover, div.tagsinput span.tag a, .vote-fav.faved, .vote-fav:hover {';
             cssStr += 'color: ' + localStorage["main-color"] + ';}';
             cssStr += 'a, .link, a.user:hover, a.tag-link:hover, span.tag.voted-down a.tag-link:hover {';
             cssStr += 'color: ' + localStorage["link-color"] + ';}';
@@ -187,7 +210,7 @@
             cssStr += 'color: ' + localStorage["btn-color"] + ';}';
             cssStr += '.warn{';
             cssStr += 'color: ' + localStorage["warn-color"] + ';}';
-            cssStr += '.confirm-button:hover, input[type=button]:hover, input[type=button]:focus, input[type=submit]:hover, input[type=submit]:focus {background-color: #F5F7F6;}';
+            cssStr += '.confirm-button:hover, input[type=button]:hover, input[type=button]:focus, input[type=submit]:hover, input[type=submit]:focus {background-color: ' + localStorage["link-color-hover"] + ';}';
             cssStr += 'input[type=button].cancel, input[type=button]:disabled, input[type=submit]:disabled, input[type=submit].cancel {';
             cssStr += 'background-color: ' + localStorage["cancelBtn-bg-color"] + ';color: ' + localStorage["cancelBtn-color"] + ';}';
             cssStr += '.confirm-button:hover, input[type=button]:hover, input[type=button]:focus, input[type=submit]:hover, input[type=submit]:focus, .user-follow:hover, .user-unfollow:hover {';
@@ -197,7 +220,9 @@
             cssStr += 'div.video-position {background-color: ' + localStorage["video-bg-color"] + ';}';
             cssStr += '.tab-bar span, .user-stats, div.comment-foot {color: ' + localStorage["second-main-font-color"] + ';}';
             cssStr += 'a.head-tab {color: ' + this.colorLuminance(localStorage["second-main-font-color"], 0.2) + ';}';
-            cssStr += 'html, body, #footer-links, div.item-container {background-color: ' + localStorage["bg-color"] + ';}';
+            cssStr += 'html, body, div.item-container {background-color: ' + localStorage["bg-color"] + ';}';
+            cssStr += '#footer-links {background-color: transparent;}';
+            cssStr += '#footer-links a {color: ' + localStorage["second-main-font-color"] + ' !important;}#footer-links a:hover {color: ' + localStorage["link-color-hover"] + '!important;}';
             cssStr += '#head-content {background-color: ' + this.convertHex(this.colorLuminance(localStorage["bg-color"], -0.6), 80) + ';}';
             cssStr += 'input, textarea {background-color: ' + this.colorLuminance(localStorage["bg-color"], 0.3) + ';}';
             cssStr += 'input:focus, textarea:focus {background-color: ' + this.colorLuminance(localStorage["bg-color"], 0.4) + ';}';
@@ -208,7 +233,17 @@
             cssStr += '.pcp-input-outer {display:blofck;margin: 0 0 10px 0;}.pcp-label {width: 40%; display:inline-block !important;}.pcp-color{padding: 0;height:26px;width: 24px;display: inline-block;border: 0;background-color:transparent;}#pcp-reset {background-color: #A21F1F;display: inline-block;padding: 10px 20px;cursor:pointer;}';
             cssStr += '.pcp-theme-list {lists-style: none; margin: 0; padding: 0;}.pcp-theme-list .pcp-theme-btn {display: inline-block; margin: 0 25px 25px 0; padding: 10px 15px; border: 1px solid #fff; cursor: pointer;} .pcp-color-input {width: 150px;display:inline-block; margin-left: 20px;}';
 
+            // userscript styles fot "pr0gramm.com Dick by Seglors"
+            cssStr += '#com-top.active, #com-top:hover, #com-new.active, #com-new:hover{color:' + localStorage["main-color"] + ' !important;}';
+            cssStr += '.opuser .user:before{background-color:' + localStorage["main-color"] + ' !important;color: ' + localStorage["main-font-color"] + ' !important;}.comment-content a .preview, .comment-content a .preview {border-color:' + localStorage["main-color"] + ' !important;}.comment-content a .preview:before, .comment-content a .preview:after {border-color:' + localStorage["main-color"] + ' transparent !important;}';
+            
+            // cust0m pr0gramm 2.0
+            cssStr += '.cust0m_menu:hover, .cust0m_menu.active, .cust0m_trigger.active, .cust0m_trigger:hover, .cust0m_button:hover {color:' + localStorage["main-color"] + ' !important;}div.comment-op div.comment-foot, .comment-foot.custom_op{border-bottom-color:' + localStorage["main-color"] + ' !important;}';
+            cssStr += '.highcharts-series path{stroke:' + localStorage["main-color"] + '; stroke-width: 2px;}.highcharts-markers.highcharts-tracker path{fill:' + localStorage["main-color"] + ';}.highcharts-tooltip path:nth-child(4) {stroke:' + localStorage["main-color"] + '; stroke-width: 1px;}.highcharts-series-group:first-child path {fill: #000;}';
 
+            // op highlight
+            cssStr += '.extension-is-op .user:before {background-color:' + localStorage["main-color"] + ' !important;}';
+            
             // svg
             logoSvg += '<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1820.8 277.8" style="enable-background:new 0 0 1820.8 277.8;" xml:space="preserve">';
             logoSvg += '<rect x="11" y="34" class="st0" width="237" height="198"></rect><g><path d="M464.8,31.8h-73.9h-29.2V221h29.2v-68h71.9c0,0,47.3-3.9,47.3-61.6C510.1,33.7,464.8,31.8,464.8,31.8z M460.3,121.8h-69.3 v-59h66.7c0,0,21.4,2.6,21.4,29.5C479,119.2,460.3,121.8,460.3,121.8z"/>';
@@ -369,7 +404,7 @@
         if (p._hasPushState) {
             anchors.each(function () {
                 this.href = '/' + $(this).attr('href').substr(
-                        1);
+                    1);
             });
         }
         anchors.fastclick(this.handleHashLink.bind(this));
