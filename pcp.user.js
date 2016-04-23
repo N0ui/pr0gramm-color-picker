@@ -3,7 +3,7 @@
 // @author		 N0ui
 // @namespace	 pcp
 // @include		 *://pr0gramm.com*
-// @version		 1.6
+// @version		 1.7
 // @updateURL	 https://raw.githubusercontent.com/N0ui/pr0gramm-color-picker/master/pcp.user.js
 // @downloadURL	 https://raw.githubusercontent.com/N0ui/pr0gramm-color-picker/master/pcp.user.js
 // @copyright	 2015+, N0ui
@@ -13,6 +13,7 @@
 // ==/UserScript==
 (function () {
     'use strict';
+
     var PCP = {
         // colors and html
         colorNames: [{
@@ -242,7 +243,7 @@
             cssStr += '.highcharts-series path{stroke:' + localStorage["main-color"] + '; stroke-width: 2px;}.highcharts-markers.highcharts-tracker path{fill:' + localStorage["main-color"] + ';}.highcharts-tooltip path:nth-child(4) {stroke:' + localStorage["main-color"] + '; stroke-width: 1px;}.highcharts-series-group:first-child path {fill: #000;}';
 
             //kfav
-            cssStr += '.kfav-save:hover {color:' + localStorage["main-color"] + ' !important;}'
+            cssStr += '.kfav-save:hover {color:' + localStorage["main-color"] + ' !important;}';
 
             // op highlight
             cssStr += '.extension-is-op .user:before {background-color:' + localStorage["main-color"] + ' !important;}';
@@ -397,43 +398,20 @@
 
 
 
-    // only to add HTML
-    p.View.Base.prototype.render = function () {
-        if (!this.visible) {
-            return;
-        }
-        if (!this.$container) {
-            this.$container = $(this.compiledTemplate(this.data));
-        } else {
-            this.$container.html(this.compiledTemplate(this.data));
-        }
-        var anchors = this.$container.find('a[href^="#"]');
-        if (p._hasPushState) {
-            anchors.each(function () {
-                this.href = '/' + $(this).attr('href').substr(
-                    1);
-            });
-        }
-        anchors.fastclick(this.handleHashLink.bind(this));
-        this.needsRendering = false;
-
-
-        // workaround for auto generated styles
-        setTimeout(function () {
-            $("style").not('#pcp-style').html(function (_, html) {
-                return html.replace(/#ee4d2e/g, localStorage["main-color"]);
-            });
-        }, 100);
-        
-        // replace main color for comment fav
-        $('body').on("click", ".kfav-save", function () {
-            $("style").not('#pcp-style').html(function (_, html) {
-                return html.replace(/#ee4d2e/g, localStorage["main-color"]);
-            });
+    // workaround for auto generated styles
+    setTimeout(function () {
+        $("style").not('#pcp-style').html(function (_, html) {
+            return html.replace(/#ee4d2e/g, localStorage["main-color"]);
         });
+        
+        //remove theme style
+        $('#theme-style').remove();
+    }, 100);
 
-
-        PCP.init();
-    };
-
+    // replace main color for comment fav
+    $('body').on("click", ".kfav-save", function () {
+        $("style").not('#pcp-style').html(function (_, html) {
+            return html.replace(/#ee4d2e/g, localStorage["main-color"]);
+        });
+    });
 })();
