@@ -207,7 +207,7 @@ var PCP = {
 
         cssStr += 'html, body, h3, .tab-bar a, .head-link, #search-submit-inline, .user, .user-score, #inboxLink.empty {color: ' + localStorage["main-font-color"] + ';}';
         cssStr += 'input.box-from-label:checked + label:before {background-color: ' + localStorage["main-font-color"] + ';}input.box-from-label + label:before {border: 1px solid ' + localStorage["main-font-color"] + ';}';
-        cssStr += '#filter-save,.confirm-button, input[type=button], input[type=submit],.filter-setting.active .filter-check, .loader > div, div.stream-next:hover span.stream-next-icon, div.stream-prev:hover span.stream-prev-icon, .user-follow, .user-unfollow {';
+        cssStr += '#filter-save,.confirm-button,span.user-comment-op, input[type=button], input[type=submit],.filter-setting.active .filter-check, .loader > div, div.stream-next:hover span.stream-next-icon, div.stream-prev:hover span.stream-prev-icon, .user-follow, .user-unfollow {';
         cssStr += 'background-color: ' + this.colorLuminance(localStorage["main-color"], -0.1) + ';}';
         cssStr += '#filter-save:hover{background-color: ' + localStorage["main-color"] + ';}';
         cssStr += '.filter-setting.active .filter-check, #upload-droparea {';
