@@ -1,4 +1,6 @@
 # pr0gramm-color-picker
-Color picker for pr0gramm
+Theming for pr0gramm
 
-Settings -> choose colors
+Footer -> theming
+
+http://pr0gramm.com/theming
