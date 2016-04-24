@@ -393,7 +393,7 @@ var PCPload = function () {
     };
 
     // by mopsalarm
-    $("#footer-links div").append("<a id='tab-theming' class='head-tab' href='#theming'>theming</a>");
+    $("#footer-links div").append("<a id='tab-theming' class='head-tab' href='/theming'>theming</a>");
     var link = $("#tab-theming");
     if (p._hasPushState) {
         link.each(function () {
