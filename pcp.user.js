@@ -3,7 +3,7 @@
 // @author		 N0ui
 // @namespace	 pcp
 // @include		 *://pr0gramm.com*
-// @version		 1.8
+// @version		 1.9
 // @updateURL	 https://raw.githubusercontent.com/N0ui/pr0gramm-color-picker/master/pcp.user.js
 // @downloadURL	 https://raw.githubusercontent.com/N0ui/pr0gramm-color-picker/master/pcp.user.js
 // @copyright	 2015+, N0ui
@@ -246,7 +246,7 @@ var PCP = {
         cssStr += '.pcp-theme-list {lists-style: none; margin: 0; padding: 0;}.pcp-theme-list .pcp-theme-btn {display: inline-block; margin: 0 25px 25px 0; padding: 10px 15px; border: 1px solid #fff; cursor: pointer;} .pcp-color-input {width: 150px;display:inline-block; margin-left: 20px;}';
 
         // userscript styles fot "pr0gramm.com Dick by Seglors"
-        cssStr += '#com-top.active, #com-top:hover, #com-new.active, #com-new:hover{color:' + localStorage["main-color"] + ' !important;}';
+        cssStr += '.stream-next:hover, .stream-prev:hover {color: ' + localStorage["main-color"] + ' !important;}#com-top.active, #com-top:hover, #com-new.active, #com-new:hover{color:' + localStorage["main-color"] + ' !important;}';
         cssStr += '.opuser .user:before{background-color:' + localStorage["main-color"] + ' !important;color: ' + localStorage["main-font-color"] + ' !important;}.comment-content a .preview, .comment-content a .preview {border-color:' + localStorage["main-color"] + ' !important;}.comment-content a .preview:before, .comment-content a .preview:after {border-color:' + localStorage["main-color"] + ' transparent !important;}.custom_seen::after {background: ' + this.convertHex(localStorage["main-color"], 70) + ' !important;}';
 
         // cust0m pr0gramm 2.0
@@ -393,7 +393,7 @@ var PCPload = function () {
     };
 
     // by mopsalarm
-    $("#footer-links div").append("<a id='tab-theming' class='head-tab' href='/theming'>theming</a>");
+    $("#footer-links div").append("<a id='tab-theming' class='head-tab' href='#theming'>theming</a>");
     var link = $("#tab-theming");
     if (p._hasPushState) {
         link.each(function () {
