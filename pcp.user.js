@@ -3,7 +3,7 @@
 // @author		 N0ui
 // @namespace	 pcp
 // @include		 *://pr0gramm.com*
-// @version		 2.0
+// @version		 
 // @updateURL	 https://raw.githubusercontent.com/N0ui/pr0gramm-color-picker/master/pcp.user.js
 // @downloadURL	 https://raw.githubusercontent.com/N0ui/pr0gramm-color-picker/master/pcp.user.js
 // @copyright	 2015+, N0ui
@@ -213,7 +213,7 @@ var PCP = {
         cssStr += '.filter-setting.active .filter-check, #upload-droparea {';
         cssStr += 'border: 1px solid ' + localStorage["main-color"] + ';}';
         cssStr += 'div.overlay-tabs span.overlay-link:hover, div.overlay-tabs span.active,#upload-droparea.active, #key-indicator, a.item-fullsize-link:hover, .vote-up:hover, .voted-down .vote-up:hover, .voted-up .vote-up:hover, .voted-up .vote-up, a.bookmarklet, #search-submit-inline:hover, #settings-logout-link,.action,.filter-setting.active .filter-name,.head-link:hover,.tab-bar a:hover, .tab-bar a.active,a.head-tab.active, a.head-tab:hover,a#inboxLink, a#inboxLink, #inboxLink.empty:hover,.head-link:hover, div.tagsinput span.tag a, .vote-fav.faved, .vote-fav:hover, #inbox-link.empty:hover {';
-        cssStr += 'color: ' + localStorage["main-color"] + ';}';
+        cssStr += 'color: ' + localStorage["main-color"] + ' !important;';
         cssStr += 'a, .link, a.user:hover, a.tag-link:hover, span.tag.voted-down a.tag-link:hover {';
         cssStr += 'color: ' + localStorage["link-color"] + ';}';
         cssStr += 'a:hover, .link:hover, .action:hover {';
