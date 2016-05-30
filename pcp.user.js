@@ -3,7 +3,7 @@
 // @author		 N0ui
 // @namespace	 pcp
 // @include		 *://pr0gramm.com*
-// @version		 1.9
+// @version		 2.0
 // @updateURL	 https://raw.githubusercontent.com/N0ui/pr0gramm-color-picker/master/pcp.user.js
 // @downloadURL	 https://raw.githubusercontent.com/N0ui/pr0gramm-color-picker/master/pcp.user.js
 // @copyright	 2015+, N0ui
@@ -205,14 +205,14 @@ var PCP = {
             cssStr = '',
             logoSvg = '';
 
-        cssStr += 'html, body, h3, .tab-bar a, .head-link, #search-submit-inline, .user, .user-score, #inboxLink.empty {color: ' + localStorage["main-font-color"] + ';}';
+        cssStr += '.theming-section {width:792px; margin: 0 auto; }html, body, h3, .tab-bar a, .head-link, #search-submit-inline, .user, .user-score, #inboxLink.empty {color: ' + localStorage["main-font-color"] + ';}';
         cssStr += 'input.box-from-label:checked + label:before {background-color: ' + localStorage["main-font-color"] + ';}input.box-from-label + label:before {border: 1px solid ' + localStorage["main-font-color"] + ';}';
         cssStr += '#filter-save,.confirm-button,span.user-comment-op, input[type=button], input[type=submit],.filter-setting.active .filter-check, .loader > div, div.stream-next:hover span.stream-next-icon, div.stream-prev:hover span.stream-prev-icon, .user-follow, .user-unfollow {';
         cssStr += 'background-color: ' + this.colorLuminance(localStorage["main-color"], -0.1) + ';}';
         cssStr += '#filter-save:hover{background-color: ' + localStorage["main-color"] + ';}';
         cssStr += '.filter-setting.active .filter-check, #upload-droparea {';
         cssStr += 'border: 1px solid ' + localStorage["main-color"] + ';}';
-        cssStr += 'div.overlay-tabs span.overlay-link:hover, div.overlay-tabs span.active,#upload-droparea.active, #key-indicator, a.item-fullsize-link:hover, .vote-up:hover, .voted-down .vote-up:hover, .voted-up .vote-up:hover, .voted-up .vote-up, a.bookmarklet, #search-submit-inline:hover, #settings-logout-link,.action,.filter-setting.active .filter-name,.head-link:hover,.tab-bar a:hover, .tab-bar a.active,a.head-tab.active, a.head-tab:hover,a#inboxLink, a#inboxLink, #inboxLink.empty:hover,.head-link:hover, div.tagsinput span.tag a, .vote-fav.faved, .vote-fav:hover {';
+        cssStr += 'div.overlay-tabs span.overlay-link:hover, div.overlay-tabs span.active,#upload-droparea.active, #key-indicator, a.item-fullsize-link:hover, .vote-up:hover, .voted-down .vote-up:hover, .voted-up .vote-up:hover, .voted-up .vote-up, a.bookmarklet, #search-submit-inline:hover, #settings-logout-link,.action,.filter-setting.active .filter-name,.head-link:hover,.tab-bar a:hover, .tab-bar a.active,a.head-tab.active, a.head-tab:hover,a#inboxLink, a#inboxLink, #inboxLink.empty:hover,.head-link:hover, div.tagsinput span.tag a, .vote-fav.faved, .vote-fav:hover, #inbox-link.empty:hover {';
         cssStr += 'color: ' + localStorage["main-color"] + ';}';
         cssStr += 'a, .link, a.user:hover, a.tag-link:hover, span.tag.voted-down a.tag-link:hover {';
         cssStr += 'color: ' + localStorage["link-color"] + ';}';
@@ -261,6 +261,9 @@ var PCP = {
 
         // visitenkarte
         cssStr += '.user.profile > .extended > ul > li > span > span:last-child {color:' + localStorage["main-color"] + ' !important;}';
+        
+        // video arrow
+        cssStr += '.yt-play{display:none;}a[href^="https://www.youtube"]:hover:after, a[href^="http://www.youtube"]:hover:after {left: 103%;top: 50%;border: solid transparent;content: " ";height: 0;width: 0;position: absolute;pointer-events: none;border-color: transparent;border-left-color: ' + localStorage["main-color"] + ';border-width: 5px;margin-top: -5px;}';
 
         // svg
         logoSvg += '<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1820.8 277.8" style="enable-background:new 0 0 1820.8 277.8;" xml:space="preserve">';
