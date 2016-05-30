@@ -3,7 +3,7 @@
 // @author		 N0ui
 // @namespace	 pcp
 // @include		 *://pr0gramm.com*
-// @version		 2.1
+// @version		 2.2
 // @updateURL	 https://raw.githubusercontent.com/N0ui/pr0gramm-color-picker/master/pcp.user.js
 // @downloadURL	 https://raw.githubusercontent.com/N0ui/pr0gramm-color-picker/master/pcp.user.js
 // @copyright	 2015+, N0ui
@@ -262,10 +262,6 @@ var PCP = {
         // visitenkarte
         cssStr += '.user.profile > .extended > ul > li > span > span:last-child {color:' + localStorage["main-color"] + ' !important;}';
         
-                
-        // video arrow
-        cssStr += '.yt-play{display:none;}a[href^="https://www.youtube"]:hover:after, a[href^="http://www.youtube"]:hover:after,a[href^="https://www.liveleak"]:hover:after, a[href^="http://www.liveleak"]:hover:after {left: 103%;top: 50%;border: solid transparent;content: " ";height: 0;width: 0;position: absolute;pointer-events: none;border-color: transparent;border-left-color: ' + localStorage["main-color"] + ';border-width: 5px;margin-top: -5px;}';
-
         // svg
         logoSvg += '<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1820.8 277.8" style="enable-background:new 0 0 1820.8 277.8;" xml:space="preserve">';
         logoSvg += '<rect x="11" y="34" class="st0" width="237" height="198"></rect><g><path d="M464.8,31.8h-73.9h-29.2V221h29.2v-68h71.9c0,0,47.3-3.9,47.3-61.6C510.1,33.7,464.8,31.8,464.8,31.8z M460.3,121.8h-69.3 v-59h66.7c0,0,21.4,2.6,21.4,29.5C479,119.2,460.3,121.8,460.3,121.8z"/>';
@@ -396,6 +392,7 @@ var PCPload = function () {
         $('#theme-style').remove();
     };
 
+    
     // by mopsalarm
     $("#footer-links div").append("<a id='tab-theming' class='head-tab' href='#theming'>theming</a>");
     var link = $("#tab-theming");
@@ -405,7 +402,6 @@ var PCPload = function () {
         });
     }
     link.fastclick(p.mainView.handleHashLink.bind(p.mainView));
-
 
     
     // add theme route
