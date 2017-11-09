@@ -176,12 +176,12 @@ const PCP = {
         lum = lum || 0;
 
         // convert to decimal and change luminosity
-        let rgb = "#",
+        let rgb = '#',
             c, i;
         for (i = 0; i < 3; i++) {
             c = parseInt(hex.substr(i * 2, 2), 16);
             c = Math.round(Math.min(Math.max(0, c + (c * lum)), 255)).toString(16);
-            rgb += ("00" + c).substr(c.length);
+            rgb += ('00' + c).substr(c.length);
         }
 
         return rgb;
@@ -215,13 +215,13 @@ const PCP = {
         .user,
         .user-score,
         #inboxLink.empty {
-            color: ${localStorage["main-font-color"]};
+            color: ${localStorage['main-font-color']};
         }
         input.box-from-label:checked + label:before {
-            background-color: ${localStorage["main-font-color"]};
+            background-color: ${localStorage['main-font-color']};
         }
         input.box-from-label + label:before {
-            border: 1px solid ${localStorage["main-font-color"]};
+            border: 1px solid ${localStorage['main-font-color']};
         }
         #filter-save,
         .confirm-button,
@@ -234,14 +234,14 @@ const PCP = {
         div.stream-prev:hover span.stream-prev-icon,
         .user-follow,
         .user-unfollow {
-            background-color: ${this.colorLuminance(localStorage["main-color"], -0.1)};
+            background-color: ${this.colorLuminance(localStorage['main-color'], -0.1)};
         }
         #filter-save:hover,#loader > div{
-            background-color: ${localStorage["main-color"]};
+            background-color: ${localStorage['main-color']};
             color: #fff;
         }
         .filter-setting.active .filter-check, #upload-droparea {
-            border: 1px solid ${localStorage["main-color"]};
+            border: 1px solid ${localStorage['main-color']};
         }
         #inbox-link,
         #inbox-link.empty:hover,div.overlay-tabs span.overlay-link:hover,
@@ -265,43 +265,43 @@ const PCP = {
         .vote-fav.faved,
         .vote-fav:hover,
         #inbox-link.empty:hover {
-            color: ${localStorage["main-color"]};
+            color: ${localStorage['main-color']};
         }
         a,
         .link,
         a.user:hover,
         a.tag-link:hover,
         span.tag.voted-down a.tag-link:hover {
-            color: ${localStorage["link-color"]};
+            color: ${localStorage['link-color']};
         }
         a:hover,
         .link:hover,
         .action:hover {
-            color: ${localStorage["link-color-hover"]};
+            color: ${localStorage['link-color-hover']};
         }
         .confirm-button,
         input[type=button],
         input[type=submit],
         .user-follow,
         .user-unfollow {
-            color: ${localStorage["btn-color"]};
+            color: ${localStorage['btn-color']};
         }
         .warn{
-            color: ${localStorage["warn-color"]};
+            color: ${localStorage['warn-color']};
         }
         .confirm-button:hover,
         input[type=button]:hover,
         input[type=button]:focus,
         input[type=submit]:hover,
         input[type=submit]:focus {
-            background-color: ${localStorage["link-color-hover"]};
+            background-color: ${localStorage['link-color-hover']};
         }
         input[type=button].cancel,
         input[type=button]:disabled,
         input[type=submit]:disabled,
         input[type=submit].cancel {
-            background-color: ${localStorage["cancelBtn-bg-color"]};
-            color: ${localStorage["cancelBtn-color"]};
+            background-color: ${localStorage['cancelBtn-bg-color']};
+            color: ${localStorage['cancelBtn-color']};
         }
         .confirm-button:hover,
         input[type=button]:hover,
@@ -310,57 +310,57 @@ const PCP = {
         input[type=submit]:focus,
         .user-follow:hover,
         .user-unfollow:hover {
-            background-color: ${localStorage["btn-hover-bg-color"]};
-            color:  ${localStorage["btn-hover-color"]};
+            background-color: ${localStorage['btn-hover-bg-color']};
+            color:  ${localStorage['btn-hover-color']};
         }
         span.tag {
-            background-color: ${localStorage["tag-bg-color"]} !important;
+            background-color: ${localStorage['tag-bg-color']} !important;
         }
         a.tag-link {
-            color: ${localStorage["tag-color"]};
+            color: ${localStorage['tag-color']};
         }
         div.video-position {
-            background-color: ${localStorage["video-bg-color"]};
+            background-color: ${localStorage['video-bg-color']};
         }
         .tab-bar span,
         .user-stats,
         div.comment-foot {
-            color: ${localStorage["second-main-font-color"]};
+            color: ${localStorage['second-main-font-color']};
         }
         a.head-tab {
-            color: ${this.colorLuminance(localStorage["second-main-font-color"], 0.2)};
+            color: ${this.colorLuminance(localStorage['second-main-font-color'], 0.2)};
         }
         html, body, div.item-container {
-            background-color: ${localStorage["bg-color"]};
+            background-color: ${localStorage['bg-color']};
         }
         #footer-links {
             background-color: transparent;
         }
         #footer-links a {
-            color: ${localStorage["second-main-font-color"]} !important;
+            color: ${localStorage['second-main-font-color']} !important;
         }
         #footer-links a:hover {
-            color: ${localStorage["link-color-hover"]}!important;
+            color: ${localStorage['link-color-hover']}!important;
         }
         #head-content {
-            background-color: ${this.convertHex(this.colorLuminance(localStorage["bg-color"], -0.6), 80)};
+            background-color: ${this.convertHex(this.colorLuminance(localStorage['bg-color'], -0.6), 80)};
         }
         input, textarea {
-            background-color: ${this.colorLuminance(localStorage["bg-color"], 0.3)};
+            background-color: ${this.colorLuminance(localStorage['bg-color'], 0.3)};
         }
         input:focus,
         textarea:focus {
-            background-color: ${this.colorLuminance(localStorage["bg-color"], 0.4)};
+            background-color: ${this.colorLuminance(localStorage['bg-color'], 0.4)};
         }
         div.comment-foot,
         div.comment-box div.comment-box {
-            border-color: ${this.colorLuminance(localStorage["bg-color"], -0.3)};
+            border-color: ${this.colorLuminance(localStorage['bg-color'], -0.3)};
         }
         input.q {
-            background-color: ${this.convertHex(this.colorLuminance(localStorage["bg-color"], 0.4), 80)};
+            background-color: ${this.convertHex(this.colorLuminance(localStorage['bg-color'], 0.4), 80)};
         }
         div.product-description {
-            background-color: ${this.colorLuminance(localStorage["bg-color"], 0.4)};
+            background-color: ${this.colorLuminance(localStorage['bg-color'], 0.4)};
         }
         #pr0gramm-logo-link {
             margin: 18px 12px 4px 4px;
@@ -371,10 +371,10 @@ const PCP = {
         #pr0gramm-logo-link svg path,
         #pr0gramm-logo-link svg polygon,
         #pr0gramm-logo-link svg rect{
-            fill:${localStorage["main-font-color"]}
+            fill:${localStorage['main-font-color']}
         }
         #pr0gramm-logo-link svg .pr0-sign {
-            fill:${localStorage["main-color"]}
+            fill:${localStorage['main-color']}
         }
         .pcp-input-outer {
             display:blofck;margin: 0 0 10px 0;
@@ -414,31 +414,31 @@ const PCP = {
             margin-left: 20px;
         }`;
 
-        // userscript styles for "pr0gramm.com Dick by Seglors"
+        // userscript styles for 'pr0gramm.com Dick by Seglors'
         cssStr += `.stream-next:hover,
         .stream-prev:hover {
-            color: ${localStorage["main-color"]} !important;
+            color: ${localStorage['main-color']} !important;
         }
         #com-top.active,
         #com-top:hover,
         #com-new.active,
         #com-new:hover {
-            color:${localStorage["main-color"]} !important;
+            color:${localStorage['main-color']} !important;
         }
         .opuser .user:before {
-            background-color:${localStorage["main-color"]} !important;
-            color: ${localStorage["main-font-color"]} !important;
+            background-color:${localStorage['main-color']} !important;
+            color: ${localStorage['main-font-color']} !important;
         }
         .comment-content a .preview,
         .comment-content a .preview {
-            border-color:${localStorage["main-color"]} !important;
+            border-color:${localStorage['main-color']} !important;
         }
         .comment-content a .preview:before,
         .comment-content a .preview:after {
-            border-color:${localStorage["main-color"]} transparent !important;
+            border-color:${localStorage['main-color']} transparent !important;
         }
         .custom_seen::after {
-            background: ${this.convertHex(localStorage["main-color"], 70)} !important;
+            background: ${this.convertHex(localStorage['main-color'], 70)} !important;
         }`;
 
         // cust0m pr0gramm 2.0
@@ -450,29 +450,29 @@ const PCP = {
         .cust0m_trigger.active,
         .cust0m_trigger:hover,
         .cust0m_button:hover {
-            color:${localStorage["main-color"]} !important;
+            color:${localStorage['main-color']} !important;
         }
         div.comment-op div.comment-foot, .comment-foot.custom_op {
-            border-bottom-color:${localStorage["main-color"]} !important;
+            border-bottom-color:${localStorage['main-color']} !important;
         }
-        .highcharts-series path{stroke:${localStorage["main-color"]}; stroke-width: 2px;}
-        .highcharts-markers.highcharts-tracker path{fill:${localStorage["main-color"]};}
-        .highcharts-tooltip path:nth-child(4) {stroke:${localStorage["main-color"]}; stroke-width: 1px;}
+        .highcharts-series path{stroke:${localStorage['main-color']}; stroke-width: 2px;}
+        .highcharts-markers.highcharts-tracker path{fill:${localStorage['main-color']};}
+        .highcharts-tooltip path:nth-child(4) {stroke:${localStorage['main-color']}; stroke-width: 1px;}
         .highcharts-series-group:first-child path {fill: #000;}`;
 
         //kfav
         cssStr += `.kfav-save:hover {
-            color:${localStorage["main-color"]} !important;
+            color:${localStorage['main-color']} !important;
         }`;
 
         // op highlight
         cssStr += `.extension-is-op .user:before {
-            background-color:${localStorage["main-color"]} !important;
+            background-color:${localStorage['main-color']} !important;
         }`;
 
         // visitenkarte
         cssStr += `.user.profile > .extended > ul > li > span > span:last-child {
-            color:${localStorage["main-color"]} !important;
+            color:${localStorage['main-color']} !important;
         }`;
 
         // svg
@@ -587,7 +587,7 @@ const PCP = {
         const $styleEl = $('#pcp-style');
 
         // set default colors
-        if (typeof localStorage["main-color"] === 'undefined' || localStorage["main-color"] === '') {
+        if (typeof localStorage['main-color'] === 'undefined' || localStorage['main-color'] === '') {
             $.each(this.colorNames, (i, v) => {
                 if (v.key !== 'html') {
                     localStorage[v.key] = v.value;
@@ -616,8 +616,8 @@ const PCPload = () => {
     };
 
     // thanks to mopsalarm
-    $("#footer-links div").append(`<a id="tab-theming" class="head-tab" href="/theming">Theming</a>`);
-    const link = $("#tab-theming");
+    $('#footer-links div').append(`<a id="tab-theming" class="head-tab" href="/theming">Theming</a>`);
+    const link = $('#tab-theming');
 
     // add theme route
     pu.addRoute('theming', p.View.Base.extend({
@@ -627,7 +627,7 @@ const PCPload = () => {
         </div>`,
         init(container, parent) {
             this.parent(container, parent);
-            p.mainView.setTab("theming");
+            p.mainView.setTab('theming');
 
             this.render();
         },
@@ -664,11 +664,11 @@ const PCPload = () => {
     PCP.init();
 
     // replace main color
-    $('body').on("click", ".kfav-save", () => {
-        $("style").not('#pcp-style').html((_, html) => html.replace(/#ee4d2e/g, localStorage["main-color"]));
+    $('body').on('click', '.kfav-save', () => {
+        $('style').not('#pcp-style').html((_, html) => html.replace(/#ee4d2e/g, localStorage['main-color']));
     });
 
-    $("style").not('#pcp-style').html((_, html) => html.replace(/#ee4d2e/g, localStorage["main-color"]));
+    $('style').not('#pcp-style').html((_, html) => html.replace(/#ee4d2e/g, localStorage['main-color']));
 };
 
 PCPload();
