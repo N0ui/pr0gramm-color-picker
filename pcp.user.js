@@ -3,10 +3,9 @@
 // @author		 N0ui
 // @namespace	 pcp
 // @include		 *://pr0gramm.com*
-// @version		 2.5
+// @version		 2.5.1
 // @updateURL	 https://raw.githubusercontent.com/N0ui/pr0gramm-color-picker/master/pcp.user.js
 // @downloadURL	 https://raw.githubusercontent.com/N0ui/pr0gramm-color-picker/master/pcp.user.js
-// @copyright	 2015+, N0ui
 // @icon		 http://pr0gramm.com/media/pr0gramm-favicon.png
 // @grant        none
 // @run-at       document-end
