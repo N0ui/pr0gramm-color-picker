@@ -3,7 +3,7 @@
 // @author		 N0ui
 // @namespace	 pcp
 // @include		 *://pr0gramm.com*
-// @version		 2.4
+// @version		 2.5
 // @updateURL	 https://raw.githubusercontent.com/N0ui/pr0gramm-color-picker/master/pcp.user.js
 // @downloadURL	 https://raw.githubusercontent.com/N0ui/pr0gramm-color-picker/master/pcp.user.js
 // @copyright	 2015+, N0ui
@@ -28,78 +28,78 @@ const pu = {
 const PCP = {
     // colors and html
     colorNames: [{
-            key: 'html',
-            html: '<h4>Hauptfarben</h4>'
-        }, {
-            desc: 'Hauptfarbe',
-            key: 'main-color',
-            value: '#ee4d2e'
-        }, {
-            desc: 'Hintergrund',
-            key: 'bg-color',
-            value: '#161618'
-        }, {
-            desc: 'Standard Schriftfarbe',
-            key: 'main-font-color',
-            value: '#f2f5f4'
-        }, {
-            desc: 'Standard Schriftfarbe 2 (grau)',
-            key: 'second-main-font-color',
-            value: '#888888'
-        }, {
-            desc: 'Linkfarbe',
-            key: 'link-color',
-            value: '#75c0c7'
-        }, {
-            desc: 'Linkfarbe Hover',
-            key: 'link-color-hover',
-            value: '#F5F7F6'
-        }, {
-            key: 'html',
-            html: '<br><h4>Buttons</h4>'
-        }, {
-            desc: 'Buttontext',
-            key: 'btn-color',
-            value: '#f2f5f4'
-        }, {
-            desc: 'Abbrechen Button Hintergrund',
-            key: 'cancelBtn-bg-color',
-            value: '#212425'
-        }, {
-            desc: 'Abbrechen Button Text',
-            key: 'cancelBtn-color',
-            value: '#888888'
-        }, {
-            desc: 'Button Hover Hintergrund',
-            key: 'btn-hover-bg-color',
-            value: '#F5F7F6'
-        }, {
-            desc: 'Button Hover Text',
-            key: 'btn-hover-color',
-            value: '#555555'
-        }, {
-            key: 'html',
-            html: '<br><h4>Video & Tags</h4>'
-        }, {
-            desc: 'Tag Hintergrund',
-            key: 'tag-bg-color',
-            value: '#2A2E31'
-        }, {
-            desc: 'Tag Text',
-            key: 'tag-color',
-            value: '#F5F7F6'
-        }, {
-            desc: 'Video Prozessbalken',
-            key: 'video-bg-color',
-            value: '#75c0c7'
-        }, {
-            key: 'html',
-            html: '<br><h4>Sonstiges</h4>'
-        }, {
-            desc: 'Warnung',
-            key: 'warn-color',
-            value: '#fc8833'
-        }
+        key: 'html',
+        html: '<h4>Hauptfarben</h4>'
+    }, {
+        desc: 'Hauptfarbe',
+        key: 'main-color',
+        value: '#ee4d2e'
+    }, {
+        desc: 'Hintergrund',
+        key: 'bg-color',
+        value: '#161618'
+    }, {
+        desc: 'Standard Schriftfarbe',
+        key: 'main-font-color',
+        value: '#f2f5f4'
+    }, {
+        desc: 'Standard Schriftfarbe 2 (grau)',
+        key: 'second-main-font-color',
+        value: '#888888'
+    }, {
+        desc: 'Linkfarbe',
+        key: 'link-color',
+        value: '#75c0c7'
+    }, {
+        desc: 'Linkfarbe Hover',
+        key: 'link-color-hover',
+        value: '#F5F7F6'
+    }, {
+        key: 'html',
+        html: '<br><h4>Buttons</h4>'
+    }, {
+        desc: 'Buttontext',
+        key: 'btn-color',
+        value: '#f2f5f4'
+    }, {
+        desc: 'Abbrechen Button Hintergrund',
+        key: 'cancelBtn-bg-color',
+        value: '#212425'
+    }, {
+        desc: 'Abbrechen Button Text',
+        key: 'cancelBtn-color',
+        value: '#888888'
+    }, {
+        desc: 'Button Hover Hintergrund',
+        key: 'btn-hover-bg-color',
+        value: '#F5F7F6'
+    }, {
+        desc: 'Button Hover Text',
+        key: 'btn-hover-color',
+        value: '#555555'
+    }, {
+        key: 'html',
+        html: '<br><h4>Video & Tags</h4>'
+    }, {
+        desc: 'Tag Hintergrund',
+        key: 'tag-bg-color',
+        value: '#2A2E31'
+    }, {
+        desc: 'Tag Text',
+        key: 'tag-color',
+        value: '#F5F7F6'
+    }, {
+        desc: 'Video Prozessbalken',
+        key: 'video-bg-color',
+        value: '#75c0c7'
+    }, {
+        key: 'html',
+        html: '<br><h4>Sonstiges</h4>'
+    }, {
+        desc: 'Warnung',
+        key: 'warn-color',
+        value: '#fc8833'
+    }
     ],
 
 
@@ -109,62 +109,62 @@ const PCP = {
         data: [{
             key: 'main-color',
             value: '#1db992'
-            }]
-        }, {
+        }]
+    }, {
         name: 'Olivgrün des Friedens',
         data: [{
             key: 'main-color',
             value: '#B0AD05'
-            }]
-        }, {
+        }]
+    }, {
         name: 'Altes Pink',
         data: [{
             key: 'main-color',
             value: '#FF0082'
-            }]
-        }, {
+        }]
+    }, {
         name: 'Altschwuchtel Grün',
         data: [{
             key: 'main-color',
             value: '#5BB91C'
-            }]
-        }, {
+        }]
+    }, {
         name: 'Mega Episches Blau',
         data: [{
             key: 'main-color',
             value: '#008FFF'
-            }]
-        }, {
+        }]
+    }, {
         name: 'Aggressionsförderndes Dunkelgelb',
         data: [{
             key: 'main-color',
             value: '#FF9900'
-            }]
-        }, {
+        }]
+    }, {
         name: 'Lebhaftes Limettengrün',
         data: [{
             key: 'main-color',
             value: '#b9cc5a'
-            }]
-        }, {
+        }]
+    }, {
         name: 'Wohliges Warmgelb',
         data: [{
             key: 'main-color',
             value: '#e3af12'
-            }]
-        }, {
+        }]
+    }, {
         name: 'Sonniges Steppenrot',
         data: [{
             key: 'main-color',
             value: '#cc674b'
-            }]
-        }, {
+        }]
+    }, {
         name: 'Samtweiches Stahlweiß',
         data: [{
             key: 'main-color',
             value: '#b0b0b0'
-            }]
-        }
+        }]
+    }
     ],
     // calculate brightness (http://www.sitepoint.com/javascript-generate-lighter-darker-color/)
     colorLuminance(hex, lum) {
@@ -206,7 +206,14 @@ const PCP = {
         let cssStr = '';
         let logoSvg = '';
 
-        cssStr += `html,
+        cssStr += `
+        body {
+            --theme-main-color: ${localStorage['main-color']};
+        }
+        .comments .comment.own-comment {
+            color: ${localStorage['main-color']};
+        }
+        html,
         body,
         h3,
         .tab-bar a,
