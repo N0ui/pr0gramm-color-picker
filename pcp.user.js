@@ -348,9 +348,6 @@ const PCP = {
         #footer-links a:hover {
             color: ${localStorage['link-color-hover']}!important;
         }
-        #head-content {
-            background-color: ${this.convertHex(this.colorLuminance(localStorage['bg-color'], -0.6), 80)};
-        }
         input, textarea {
             background-color: ${this.colorLuminance(localStorage['bg-color'], 0.3)};
         }
